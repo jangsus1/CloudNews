@@ -1,0 +1,182 @@
+extends ../layouts/header
+block content
+	nav#mainNav.navbar.navbar-expand-lg.bg-secondary.text-uppercase.fixed-top
+		.container
+			a.navbar-brand(href='/') 국방뉴스
+			button.navbar-toggler.text-uppercase.font-weight-bold.bg-primary.text-white.rounded(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
+				| Menu 
+				i.fas.fa-bars
+			#navbarResponsive.collapse.navbar-collapse
+				ul.navbar-nav.ms-auto
+					li.nav-item.mx-0.mx-lg-1
+						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/news/gb') News1
+					li.nav-item.mx-0.mx-lg-1
+						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/news/gb') News2
+					li.nav-item.mx-0.mx-lg-1
+						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/news/gb') News3
+	// Masthead
+	header.masthead.bg-primary.text-white.text-center
+		.container.d-flex.align-items-center.flex-column
+			h1.masthead-heading.text-uppercase.mb-0 GookBang News
+			// Icon Divider
+			.divider-custom.divider-light
+				.divider-custom-line
+				.divider-custom-icon
+					i.fas.fa-star
+				.divider-custom-line
+			// Masthead Subheading
+			p.masthead-subheading.font-weight-light.mb-0 All-in-one Military News Analyzing Service
+
+	// Portfolio Section
+	section#portfolio.page-section.portfolio
+		.container
+			// Portfolio Section Heading
+			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 News
+			// Icon Divider
+			.divider-custom
+				.divider-custom-line
+				.divider-custom-icon
+					i.fas.fa-star
+				.divider-custom-line
+			// Portfolio Grid Items
+			.row.justify-content-center
+				// Portfolio Item 1
+				.col-md-6.col-lg-4.mb-5
+					.portfolio-item.mx-auto
+						a(href='/news/gb')
+							#news1.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+								.portfolio-item-caption-content.text-center.text-white
+									i.fas.fa-plus.fa-3x
+							img.img-fluid(src='images/portfolio/cabin.png', alt='...')
+				// Portfolio Item 2
+				.col-md-6.col-lg-4.mb-5
+					.portfolio-item.mx-auto(data-bs-toggle='modal', data-bs-target='#portfolioModal2')
+						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+							.portfolio-item-caption-content.text-center.text-white
+								i.fas.fa-plus.fa-3x
+						img.img-fluid(src='images/portfolio/cake.png', alt='...')
+				// Portfolio Item 3
+				.col-md-6.col-lg-4.mb-5
+					.portfolio-item.mx-auto(data-bs-toggle='modal', data-bs-target='#portfolioModal3')
+						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+							.portfolio-item-caption-content.text-center.text-white
+								i.fas.fa-plus.fa-3x
+						img.img-fluid(src='images/portfolio/circus.png', alt='...')
+				// Portfolio Item 4
+				.col-md-6.col-lg-4.mb-5.mb-lg-0
+					.portfolio-item.mx-auto(data-bs-toggle='modal', data-bs-target='#portfolioModal4')
+						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+							.portfolio-item-caption-content.text-center.text-white
+								i.fas.fa-plus.fa-3x
+						img.img-fluid(src='images/portfolio/game.png', alt='...')
+				// Portfolio Item 5
+				.col-md-6.col-lg-4.mb-5.mb-md-0
+					.portfolio-item.mx-auto(data-bs-toggle='modal', data-bs-target='#portfolioModal5')
+						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+							.portfolio-item-caption-content.text-center.text-white
+								i.fas.fa-plus.fa-3x
+						img.img-fluid(src='images/portfolio/safe.png', alt='...')
+				// Portfolio Item 6
+				.col-md-6.col-lg-4
+					.portfolio-item.mx-auto(data-bs-toggle='modal', data-bs-target='#portfolioModal6')
+						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+							.portfolio-item-caption-content.text-center.text-white
+								i.fas.fa-plus.fa-3x
+						img.img-fluid(src='images/portfolio/submarine.png', alt='...')
+
+	// About Section
+	section#about.page-section.bg-primary.text-white.mb-0
+		.container
+			// About Section Heading
+			h2.page-section-heading.text-center.text-uppercase.text-white About
+			// Icon Divider
+			.divider-custom.divider-light
+				.divider-custom-line
+				.divider-custom-icon
+					i.fas.fa-star
+				.divider-custom-line
+			// About Section Content
+			.row
+				.col-lg-4.ms-auto
+					p.lead
+						| Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.
+				.col-lg-4.me-auto
+					p.lead
+						| You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!
+			// About Section Button
+			.text-center.mt-4
+				a.btn.btn-xl.btn-outline-light(href='https://startbootstrap.com/theme/freelancer/')
+					i.fas.fa-download.me-2
+					| Free Download!
+
+	// Contact Section
+	section#contact.page-section
+		.container
+			// Contact Section Heading
+			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 Contact Me
+			// Icon Divider
+			.divider-custom
+				.divider-custom-line
+				.divider-custom-icon
+					i.fas.fa-star
+				.divider-custom-line
+			// Contact Section Form
+			.row.justify-content-center
+				.col-lg-8.col-xl-7
+					form
+						.form-floating
+							input#inputName.form-control(type='text' placeholder='Enter your name...')
+							label(for='inputName') Name
+						.form-floating
+							input#inputEmail.form-control(type='email' placeholder='Enter your email...')
+							label(for='inputEmail') Email address
+						.form-floating
+							input#inputPhone.form-control(type='tel' placeholder='Enter your phone number...')
+							label(for='inputPhone') Phone Number
+						.form-floating
+							textarea#inputMessage.form-control(placeholder='Enter your message here...', style='height: 12rem;')
+							label(for='inputMessage') Message
+						br
+						button.btn.btn-primary.btn-xl(type='submit') Send
+
+	// Footer
+	footer.footer.text-center
+		.container
+			.row
+				// Footer Location
+				.col-lg-4.mb-5.mb-lg-0
+					h4.text-uppercase.mb-4 Location
+					p.lead.mb-0
+						| 2215 John Daniel Drive
+						br
+						| Clark, MO 65243
+				// Footer Social Icons
+				.col-lg-4.mb-5.mb-lg-0
+					h4.text-uppercase.mb-4 Around the Web
+					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
+						i.fab.fa-fw.fa-facebook-f
+					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
+						i.fab.fa-fw.fa-twitter
+					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
+						i.fab.fa-fw.fa-linkedin-in
+					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
+						i.fab.fa-fw.fa-dribbble
+				// Footer About Text
+				.col-lg-4
+					h4.text-uppercase.mb-4 About Freelancer
+					p.lead.mb-0
+						| Freelance is a free to use, MIT licensed Bootstrap theme created by 
+						a(href='http://startbootstrap.com') Start Bootstrap
+						| .
+
+	// Copyright Section
+	div.copyright.py-4.text-center.text-white
+		.container
+			small Copyright &copy; Your Website 2021
+
+
+	// Bootstrap core JS
+	
+
+	// Core theme JS
+	

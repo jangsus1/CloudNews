@@ -1,0 +1,30 @@
+.marginForNavbar {
+}
+
+#NewsImage {
+	background-color : green;
+	height : 100%;
+}
+
+#MainSection {
+	
+}
+
+#Summary {
+	background-color : gray;
+	width : 100%;
+}
+
+#WordCloud {
+	background-color : lightblue;
+}
+
+@media (min-width: 992px) {
+	#page-top {
+	margin-top : 104px;
+}
+}
+
+#page-top {
+	margin-top : 74px;
+}

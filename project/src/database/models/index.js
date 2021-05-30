@@ -6,14 +6,14 @@ const Sequelize = require('sequelize');
 const pagination = require('../../../lib/pagination');
 const basename = path.basename(__filename);
 const db = {};
-const config = require("../../../config/config");
+const config = require("../../../config/database");
 
 
 const _capitalize = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-let sequelize = new Sequelize(config.databaseInfo);
+let sequelize = new Sequelize(config);
 
 fs
   .readdirSync(__dirname)

@@ -2,33 +2,25 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
   var News = sequelize.define('news', {
-    name: {
-      type : DataTypes.STRING,
-      allowNull : true,
+    issueNumber: {
+      	type : DataTypes.STRING,
+      	allowNull : true,
     },
-    date : {
-		
+    issueDate : {
+		type : DataTypes.STRING,
+      	allowNull : false,
 	}
   }, {
     
 
   })
 
-  Form.prototype.canDelete = async function(){
-    const result = await sequelize.query(
-      `SELECT COUNT(*) as cnt FROM surveys WHERE formId=:formId`, 
-      { replacements: {formId: this.id}, raw: true, nest: true, type: sequelize.QueryTypes.SELECT }
-    )
-    return result[0].cnt == 0;
+
+  News.associate = (models) => {
+	models.News.belongsTo(models.Publisher)
+    models.News.hasMany(models.Page);
+    models.News.hasOne(models.Keyword);
   }
 
-
-  Form.associate = (models) => {
-    models.Form.hasMany(models.Question);
-    models.Form.hasMany(models.VisualGroup);
-    models.Form.hasMany(models.Survey);
-    models.Form.hasMany(models.Section);
-  }
-
-  return Form
+  return News
 }

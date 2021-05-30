@@ -18,7 +18,18 @@ block content
 	.container-fluid#MainSection.marginForNavbar.h-100
 		.row.h-100
 			.col-md-6.h-100#NewsImage
-				embed(src='/test/testNews.pdf' type='application/pdf', width='100%', height='100%')
+				#carousel.carousel.slide(data-bs-interval=false).h-100
+					.carousel-inner.h-100
+						.carousel-item.active.h-100
+							embed(src='/test/testNews.pdf' type='application/pdf', width='100%', height='100%')
+						.carousel-item.h-100
+							embed(src='/test/testNews.pdf' type='application/pdf', width='100%', height='100%')
+					button.carousel-control-prev(type='button' data-bs-target="#carousel" data-bs-slide='prev')
+						span.carousel-control-prev-icon(aria-hidden='true')
+						span.visually-hidden Previous
+					button.carousel-control-next(type='button' data-bs-target="#carousel" data-bs-slide='next')
+						span.carousel-control-next-icon(aria-hidden='true')
+						span.visually-hidden Next
 			.col-md-6.h-100
 				.row-4.h-25
 					#Summary.w-100.h-100

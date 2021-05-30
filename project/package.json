@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "migrate": "node ./src/database/migrations/index.js"
   },
   "dependencies": {
     "connect-flash": "^0.1.1",
@@ -14,6 +15,7 @@
     "jade": "~1.11.0",
     "method-override": "^3.0.0",
     "morgan": "~1.9.1",
+    "mysql2": "^2.2.5",
     "node-sass-middleware": "^0.11.0",
     "nodemon": "^2.0.7",
     "sequelize": "^6.6.2"

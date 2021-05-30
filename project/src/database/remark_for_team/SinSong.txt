@@ -1,0 +1,30 @@
+테이블 관련해서 메모 남김.
+
+(publisher) 
+name = 뉴스 이름
+agency = 발행기관
+
+(news)
+issue_number 발행 호
+issue_date 발행 일자
+
+(page)
+page_number 페이지 번호(면)
+news_image 뉴스 페이지 이미지
+summary 뉴스 페이지 요약
+
+(keyword)
+word[10] 키워드 단어
+chart 키워드 차트 이미지
+wordcloud 키워드 워드클라우드 이미지
+
+(ranking)
+word[10] keyword에서 FOREIGN KEY로 참조
+count 키워드 나온 횟수
+rank 순위
+
+
+민석이한테 물어 볼 것 있음.
+Q. 이미지 변수 데이터 형식 BLOB로 만들어주면 처리할 때 괜찮아?
+
+

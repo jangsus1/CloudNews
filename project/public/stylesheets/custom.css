@@ -1,10 +1,3 @@
-.marginForNavbar {
-}
-
-
-#MainSection {
-	
-}
 
 #Summary {
 	background-color : gray;
@@ -24,3 +17,21 @@
 #page-top {
 	margin-top : 74px;
 }
+
+#carousel-news .carousel-inner .carousel-item.active,
+#carousel-news .carousel-inner .carousel-item-next,
+#carousel-news .carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+#carousel-news	.carousel-inner .carousel-item-start.active, 
+#carousel-news	.carousel-inner .carousel-item-prev {
+  transform: translateX(-33.3%);
+}
+
+#carousel-news	.carousel-inner .carousel-item-end.active,
+#carousel-news	.carousel-inner .carousel-item-next {
+  transform: translateX(33.3%);
+}
+
+

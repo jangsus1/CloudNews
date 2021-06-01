@@ -10,10 +10,6 @@ module.exports = (sequelize, DataTypes) => {
 		type : DataTypes.STRING,
       	allowNull : false,
 	},
-	summary : {
-		type : DataTypes.STRING,
-		allowNull : true
-	}
   })
 
 

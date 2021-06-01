@@ -29,7 +29,7 @@ block content
 
 	// Portfolio Section
 	section#portfolio.page-section.portfolio
-		.container
+		.container-fluid
 			// Portfolio Section Heading
 			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 News
 			// Icon Divider
@@ -39,51 +39,57 @@ block content
 					i.fas.fa-star
 				.divider-custom-line
 			// Portfolio Grid Items
-			.row.justify-content-center
-				// Portfolio Item 1
-				.col-md-6.col-lg-4.mb-5
-					.portfolio-item.mx-auto.border.border-primary.border-3
-						a(href='/news/gb')
+			#carousel-news.row.justify-content-center.carousel.carousel-dark.slide(data-bs-interval="false")
+				.carousel-inner
+					// Portfolio Item 1
+					.carousel-item.active
+						.portfolio-item.border.border-primary.border-3.col-4.mx-auto
 							.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 								.portfolio-item-caption-content.text-center.text-white
 									i.fas.fa-plus.fa-3x
 							img.img-fluid(src='images/portfolio/gookbang.png', alt='...')
-				// Portfolio Item 2
-				.col-md-6.col-lg-4.mb-5
-					.portfolio-item.mx-auto.border.border-primary.border-3
-						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-							.portfolio-item-caption-content.text-center.text-white
-								i.fas.fa-plus.fa-3x
-						img.img-fluid(src='images/portfolio/narasarang.png', alt='...')
-				// Portfolio Item 3
-				.col-md-6.col-lg-4.mb-5
-					.portfolio-item.mx-auto.border.border-primary.border-3
-						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-							.portfolio-item-caption-content.text-center.text-white
-								i.fas.fa-plus.fa-3x
-						img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
-				// Portfolio Item 4
-				.col-md-6.col-lg-4.mb-5.mb-lg-0
-					.portfolio-item.mx-auto.border.border-primary.border-3
-						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-							.portfolio-item-caption-content.text-center.text-white
-								i.fas.fa-plus.fa-3x
-						img.img-fluid(src='images/portfolio/yuksa.png', alt='...')
-				// Portfolio Item 5
-				.col-md-6.col-lg-4.mb-5.mb-md-0
-					.portfolio-item.mx-auto.border.border-primary.border-3
-						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-							.portfolio-item-caption-content.text-center.text-white
-								i.fas.fa-plus.fa-3x
-						img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
-				// Portfolio Item 6
-				.col-md-6.col-lg-4
-					.portfolio-item.mx-auto.border.border-primary.border-3
-						.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-							.portfolio-item-caption-content.text-center.text-white
-								i.fas.fa-plus.fa-3x
-						img.img-fluid(src='images/portfolio/narasarang.png', alt='...')
-
+					// Portfolio Item 2
+					.carousel-item
+						.portfolio-item.border.border-primary.border-3.col-4.mx-auto
+							.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+								.portfolio-item-caption-content.text-center.text-white
+									i.fas.fa-plus.fa-3x
+							img.img-fluid(src='images/portfolio/narasarang.png', alt='...')
+					// Portfolio Item 3
+					.carousel-item
+						.portfolio-item.border.border-primary.border-3.col-4.mx-auto
+							.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+								.portfolio-item-caption-content.text-center.text-white
+									i.fas.fa-plus.fa-3x
+							img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
+					// Portfolio Item 4
+					.carousel-item
+						.portfolio-item.border.border-primary.border-3.col-4.mx-auto
+							.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+								.portfolio-item-caption-content.text-center.text-white
+									i.fas.fa-plus.fa-3x
+							img.img-fluid(src='images/portfolio/yuksa.png', alt='...')
+					// Portfolio Item 5
+					.carousel-item
+						.portfolio-item.border.border-primary.border-3.col-4
+							.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+								.portfolio-item-caption-content.text-center.text-white
+									i.fas.fa-plus.fa-3x
+							img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
+					// Portfolio Item 6
+					.carousel-item
+						.portfolio-item.border.border-primary.border-3.col-4
+							.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+								.portfolio-item-caption-content.text-center.text-white
+									i.fas.fa-plus.fa-3x
+							img.img-fluid(src='images/portfolio/narasarang.png', alt='...')
+				a.carousel-control-prev(data-bs-target="#carousel-news" role="button" data-bs-slide="prev")
+					span.carousel-control-prev-icon(aria-hidden="true")
+					span.sr-only Previous
+				a.carousel-control-next(href="#carousel-news" role="button" data-bs-slide="next")
+					span.carousel-control-next-icon(aria-hidden="true")
+					span.sr-only Next
+	script(src='javascripts/main/carousel.js')
 	// About Section
 	section#about.page-section.bg-primary.text-white.mb-0
 		.container

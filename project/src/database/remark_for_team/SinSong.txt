@@ -1,34 +1,13 @@
-테이블 관련해서 메모 남김.
+MYSQL root pw : 1234
 
-(publisher) 
-name = 뉴스 이름
-agency = 발행기관
+page나 keywords에서 이미지 저장할때 굳이 디비 안에 BLOB으로 저장하지 않고 STRING으로 파일 경로만 넣어줘도 될듯합니다. 이미지는 public/news에 따로 넣어주면 될거같아용. 
 
-(news)
-issue_number 발행 호
-issue_date 발행 일자
+06/01
+회의결과 -> simple design and chart dynamic 
+일단 db 다 갈아엎는게 좋을 것 같아서 수정중.
+상윤이한테 데이터 받으면
+키워드 자료는 csv import해서 ranking 테이블에 넣어둘거고,
+신문 pdf랑 wordcloud는 public/news/issue_num/page_num으로 정리해서 넣어두겠음.
 
-(page)
-page_number 페이지 번호(면)
-news_image 뉴스 페이지 이미지
-summary 뉴스 페이지 요약
+그리고 6/9일자부터 일+석 근무인데 백신때문에 중반부터 근무꼬일듯.
 
-(keyword)
-word[10] 키워드 단어
-chart 키워드 차트 이미지
-wordcloud 키워드 워드클라우드 이미지
-
-(ranking)
-word[10] keyword에서 FOREIGN KEY로 참조
-count 키워드 나온 횟수
-rank 순위
-
-
-민석이한테 물어 볼 것 있음.
-Q. 이미지 변수 데이터 형식 BLOB로 만들어주면 처리할 때 괜찮아?
-넴넴
-
-
-MYSQL root 계정 비번 1234로 변경했습니다.
-
-page나 keywords에서 이미지 저장할때 굳이 디비 안에 BLOB으로 저장하지 않고 STRING으로 파일 경로만 넣어줘도 될듯합니다. 이미지는 public/news에 따로 넣어주면 될거같아용.

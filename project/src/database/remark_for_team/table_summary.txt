@@ -1,4 +1,4 @@
-(publisher) 
+(publishers) 
 name = 뉴스 이름
 agency = 발행기관
 
@@ -7,12 +7,12 @@ issue_number 발행 호
 issue_date 발행 일자
 Foreign Key(publisher-publisherId)
 
-(page)
+(pages)
 page_number 페이지 번호(면)
 page_image 뉴스 페이지 이미지
 Foreign Key(news-newsId)
 
-(keyword)
+(keywords)
 wordcloud 워드클라우드 이미지
 Foreign Key(news-newsId),(page-pageId)
 

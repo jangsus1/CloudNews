@@ -5,9 +5,9 @@ page나 keywords에서 이미지 저장할때 굳이 디비 안에 BLOB으로 �
 06/01
 회의결과 -> simple design and chart dynamic 
 일단 db 다 갈아엎는게 좋을 것 같아서 수정중.
-상윤이한테 데이터 받으면
-키워드 자료는 csv import해서 ranking 테이블에 넣어둘거고,
+데이터 받으면 키워드 자료는 csv import해서 ranking 테이블에 넣어둘거고,
 신문 pdf랑 wordcloud는 public/news/issue_num/page_num으로 정리해서 넣어두겠음.
 
-그리고 6/9일자부터 일+석 근무인데 백신때문에 중반부터 근무꼬일듯.
+Q. 근데 string으로 파일경로를 넣어두고 사용한다는 말이
+select로 매번 newsID와 pageID 값 조회해서 경로가 갱신되게 만들자는 말 맞아? 
 

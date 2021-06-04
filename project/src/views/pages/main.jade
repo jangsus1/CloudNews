@@ -42,45 +42,45 @@ block content
 			// Portfolio Grid Items
 			.row.justify-content-center
 				.col-1.d-grid
-					button.btn.btn-lg
+					button.btn.btn-lg#newsCarouselLeft
 						i.fa.fa-chevron-left
-				.col-10
-						.row.news-item.active
-							.portfolio-item.border.border-primary.border-3.col-3.mx-auto
+				.col-10.news-item-wrapper
+						.row.news-item.active.first
+							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/1')
 								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
 								img.img-fluid(src='images/portfolio/gookbang.png', alt='...')
 						.row.news-item
-							.portfolio-item.border.border-primary.border-3.col-3.mx-auto
+							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/2')
 								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
 								img.img-fluid(src='images/portfolio/narasarang.png', alt='...')
 						.row.news-item
-							.portfolio-item.border.border-primary.border-3.col-3.mx-auto
-								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-									.portfolio-item-caption-content.text-center.text-white
-										i.fas.fa-plus.fa-3x
-								img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
-						.row.news-item
-							.portfolio-item.border.border-primary.border-3.col-4.mx-auto
+							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/3')
 								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
 								img.img-fluid(src='images/portfolio/yuksa.png', alt='...')
 						.row.news-item
-							.portfolio-item.border.border-primary.border-3.col-4.mx-auto
+							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/4')
 								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
 								img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
 						.row.news-item
-							.portfolio-item.border.border-primary.border-3.col-4.mx-auto
+							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/5')
 								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
-								img.img-fluid(src='images/portfolio/narasarang.png', alt='...')
+								img.img-fluid(src='', alt='...')
+						.row.news-item.last
+							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/6')
+								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
+									.portfolio-item-caption-content.text-center.text-white
+										i.fas.fa-plus.fa-3x
+								img.img-fluid(src='', alt='...')
 				.col-1.d-grid
 					button.btn.btn-lg#newsCarouselRight
 						i.fa.fa-chevron-right

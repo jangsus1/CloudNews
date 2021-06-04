@@ -3,5 +3,6 @@ module.exports = {
 	password: "1234",
 	database: "gb_db",
 	host: "127.0.0.1",
-	dialect: "mysql"
+	dialect: "mysql",
+	charset: "utf8"
 }

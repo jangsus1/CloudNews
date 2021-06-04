@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "migrate": "node ./src/database/migrations/index.js"
+    "migrate": "node ./src/database/migrations/index.js",
+	"seeder:insert": "node ./src/database/seeders/index.js"
   },
   "dependencies": {
     "bootstrap-icons": "^1.5.0",

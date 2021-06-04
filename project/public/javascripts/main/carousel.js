@@ -19,30 +19,34 @@ items.forEach((el) => {
 })
 
 $(function(){
-	let firstElement = $('.news-item.active');
 	$('#newsCarouselLeft').click(function(){
+		let current = $('.news-item.active');
+		let prev = current.prev();
+		if(!prev.length) prev =  $('.news-item.last');
+		
+		current.removeClass('active');
+		prev.addClass('active');
+		
+		current.css('transform', 'translateX(33.3%)');
+		setTimeout(() => {
+			current.css({'display': 'none', transform : 'translateX(0)'});
+			prev.css('display', 'flex')
+		}, 500)
 	});
 	
 	$('#newsCarouselRight').click(function(){
 		let current = $('.news-item.active');
 		let next = current.next();
-		if(!next) next = firstElement;
-		console.log(current, next);
-		next.css('translateX', '33.3%');
-		next.css('display', 'flex');
-		
-		next.css('transition', '2s all;');
-		current.css('transition', '2s all;');
-		
-		next.css('translateX', '0');
-		current.css('translateX', '-33.3%');
-		
-		next.css('transition', 'none');
-		current.css('transition', 'none');
-		
-		current.css('display', 'none');
+		if(!next.length) next =  $('.news-item.first');
 		
 		current.removeClass('active');
 		next.addClass('active');
+		
+		current.css('transform', 'translateX(-33.3%)');
+		setTimeout(() => {
+			current.css({'display': 'none', transform : 'translateX(0)'});
+			next.css('display', 'flex')
+		}, 500)
+		
 	});
 })

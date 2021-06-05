@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
   var News = sequelize.define('news', {
     issueNumber: {
-      	type : DataTypes.STRING,
+      	type : DataTypes.INTEGER,
       	allowNull : true,
     },
     issueDate : {
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 	models.News.belongsTo(models.Publisher)
     models.News.hasMany(models.Page);
     models.News.hasOne(models.Keyword);
+	models.Page.hasOne(models.Ranking);
   }
 
   return News

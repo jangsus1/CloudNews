@@ -1,13 +1,44 @@
 MYSQL root pw : 1234
 
-page나 keywords에서 이미지 저장할때 굳이 디비 안에 BLOB으로 저장하지 않고 STRING으로 파일 경로만 넣어줘도 될듯합니다. 이미지는 public/news에 따로 넣어주면 될거같아용. 
-
 06/01
 회의결과 -> simple design and chart dynamic 
-일단 db 다 갈아엎는게 좋을 것 같아서 수정중.
-데이터 받으면 키워드 자료는 csv import해서 ranking 테이블에 넣어둘거고,
-신문 pdf랑 wordcloud는 public/news/issue_num/page_num으로 정리해서 넣어두겠음.
+데이터 받으면 키워드 자료는 csv import해서 ranking 테이블로 저장
 
-Q. 근데 string으로 파일경로를 넣어두고 사용한다는 말이
-select로 매번 newsID와 pageID 값 조회해서 경로가 갱신되게 만들자는 말 맞아? 
+이미지 파일(워드클라우드, pdf) 예상 경로 
+public/news(GB,NA,US,GS)/issue_num(int)/page_num(int)
+
+06/05
+keyword & pages table을 merge
+table 수정 완료 -> table_summary 상태
+
+해야할 것)
+원본데이터를 mysql에 한번에 추가하는 쿼리 필요 -> 데이터 손실방지
+
+차후 계획)
+드라이브로 빠른시일내에 (국방일보, 나라사랑) pdf + keyword 받을듯.
+데이터 처리 할 계획 짜둬야 함.
+numpy 파일 파싱 필요할 수 있음.
+
+
+
+
+Ranking csv FILE format)
+id,word,count,rank 
+1,"장일현",23,2 
+2,"이승윤",26,1 
+3,"장민석",23,3
+
+csv import table query)
+LOAD DATA INFILE '/public/news/issue_num/pagenum/keyword.csv'  
+INTO TABLE rank 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"' 
+LINES TERMINATED BY '\n' 
+IGNORE 1 ROWS
+(@id,@word,@count,@rank)
+set id = @id,
+	word = @word,
+	count = @count,
+	rank = @rank;
+
 

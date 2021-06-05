@@ -6,15 +6,20 @@ module.exports = (sequelize, DataTypes) => {
       	type : DataTypes.STRING,
       	allowNull : false,
     },
-    pageImage : {
+    pageImageURL : {
 		type : DataTypes.STRING,
       	allowNull : false,
 	},
+	wordcloudURL : {
+		type : DataTypes.STRING,
+		allowNull : true,
+	}
   })
 
 
   Page.associate = (models) => {
     models.Page.belongsTo(models.News);
+	models.News.hasMany(models.Ranking);
     models.Page.hasOne(models.Keyword);
   }
 

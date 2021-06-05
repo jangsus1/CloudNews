@@ -1,15 +1,12 @@
 var express = require('express');
 var router = express.Router();
-
+const DefaultController = require('../controllers/default');
 /* GET home page. */
 
 
-router.get('/', function(req, res, next) {
-  res.render('pages/main');
-});
+router.get('/', DefaultController.getMainPage);
 
-router.get('/news/gb', (req, res, next) => {
-	res.render('pages/page')
-})
+
+router.get('/publishers/:pid', DefaultController.getNewsPage);
 
 module.exports = router;

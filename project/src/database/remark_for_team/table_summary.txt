@@ -1,26 +1,24 @@
 (publishers) 
+id
 name = 뉴스 이름
 agency = 발행기관
 
 (news)
+id
 issue_number 발행 호
 issue_date 발행 일자
 Foreign Key(publisher-publisherId)
 
 (pages)
+id
 page_number 페이지 번호(면)
-page_image 뉴스 페이지 이미지
+page_imageURL 뉴스 페이지 이미지
+wordcloudURL 워드클라우드 이미지
 Foreign Key(news-newsId)
 
-(keywords)
-wordcloud 워드클라우드 이미지
-Foreign Key(news-newsId),(page-pageId)
-
 (ranking) 
+id
 word string
 count 키워드 나온 횟수
 rank 순위
 Foreign Key(news-newsId),(page-pageId)
-
-
-ranking은 테이블 형식 맞춰서 csv로 import

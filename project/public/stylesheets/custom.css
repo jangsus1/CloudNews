@@ -26,3 +26,12 @@
 .news-item-wrapper {
 	overflow : hidden;
 }
+
+.filterArea{
+	max-width : 300px;
+	background-color : lightgray;
+}
+
+#datePicker{
+	max-width : 250px;
+}

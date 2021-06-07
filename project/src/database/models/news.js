@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       	allowNull : true,
     },
     issueDate : {
-		type : DataTypes.STRING,
+		type : DataTypes.DATE,
       	allowNull : false,
 	}
   }, {
@@ -19,8 +19,6 @@ module.exports = (sequelize, DataTypes) => {
   News.associate = (models) => {
 	models.News.belongsTo(models.Publisher)
     models.News.hasMany(models.Page);
-    models.News.hasOne(models.Keyword);
-	models.Page.hasOne(models.Ranking);
   }
 
   return News

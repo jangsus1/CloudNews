@@ -1,4 +1,5 @@
 extends ../layouts/header.jade
+include ../mixins/NewsBlock.jade
 
 block css
 	link(href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel='stylesheet')
@@ -8,24 +9,10 @@ block javascript
 	
 	
 block content
-	nav#mainNav.navbar.navbar-expand-lg.bg-secondary.text-uppercase.fixed-top.navbar-shrink
-		.container
-			a.navbar-brand(href='/') 국방뉴스
-			button.navbar-toggler.text-uppercase.font-weight-bold.bg-primary.text-white.rounded(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-				| Menu 
-				i.fas.fa-bars
-			#navbarResponsive.collapse.navbar-collapse
-				ul.navbar-nav.ms-auto
-					li.nav-item.mx-0.mx-lg-1
-						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/publisher/1') News1
-					li.nav-item.mx-0.mx-lg-1
-						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/publisher/2') News2
-					li.nav-item.mx-0.mx-lg-1
-						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/publisher/3') News3
 	.container-fluid.h-100
 		.row.h-100
-			.col-4.p-0
-				.filterArea.px-4.h-100
+			.filterArea.col-4.p-0
+				.px-4.h-100
 					h2.py-4 Filter
 					.datePicker
 						span 날짜 필터링
@@ -35,10 +22,18 @@ block content
 					.keywordSearch.mt-2
 						span 포함된 키워드
 						input#keywordInput.form-control(type='text' name='keyword' placeholder='키워드를 입력하세요')
-					#searchButton.mt-2
+					#searchButton.mt-2(pid=pid)
 						button.btn.btn-primary.float-end 검색
 			.col-8
-				.newsListArea
+				.newsListArea.container-fluid.mt-2
+					.row.w-100
+						.col-md-4
+							+NewsBlock(1, '이거슨 테스트입니다 희희희희', '/images/portfolio/cabin.png')
+						.col-md-4
+							+NewsBlock(2, '이거슨 테스트입니다 희희희희', '/images/portfolio/cabin.png')
+						.col-md-4
+							+NewsBlock(3, '이거슨 테스트입니다 희희희희', '/images/portfolio/cabin.png')
+					
 		script(src='/javascripts/news/ajax.js')
 				
 				

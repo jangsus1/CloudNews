@@ -14,12 +14,15 @@ $(function(){
 		const keyword = $('#keywordInput').val();
 		const start = $start.val();
 		const end = $end.val();
-		$.get( "/api/news?start="+start+"&end="+end+(keyword && "&keyword="+keyword), function(data){
+		$.get( "/api/publishers/"+$(this).attr('pid')+"/news/?start="+start+"&end="+end+(keyword && "&keyword="+keyword), function(data){
 			console.log(data);
 		})
 		
 	})
 	
+	$('.NewsBlock').click(function(){
+		window.location = '/news/'+$(this).attr('nid');
+	})
 	
 	
 })

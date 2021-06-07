@@ -6,11 +6,17 @@ DefaultController.getMainPage = (req, res, next) => {
 	res.render('pages/main')
 }
 
-DefaultController.getNewsPage = async (req, res, next) => {
-	const publisherId = req.params.pid;
+DefaultController.getNews = async (req, res, next) => {
+	const pid = req.params.pid;
 	
 	const newsList = [];
-	res.render('pages/news', newsList);
+	res.render('pages/news', {newsList, pid});
+}
+
+DefaultController.getPage = async (req, res, next) => {
+	
+	
+	res.render('pages/page');
 }
 
 

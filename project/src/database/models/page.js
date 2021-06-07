@@ -3,7 +3,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Page = sequelize.define('page', {
     pageNumber: {
-      	type : DataTypes.STRING,
+      	type : DataTypes.INTEGER,
       	allowNull : false,
     },
     pageImageURL : {
@@ -19,8 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Page.associate = (models) => {
     models.Page.belongsTo(models.News);
-	models.News.hasMany(models.Ranking);
-    models.Page.hasOne(models.Keyword);
+	models.Page.hasMany(models.Keyword);
   }
 
   return Page

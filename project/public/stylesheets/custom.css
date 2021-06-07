@@ -35,3 +35,12 @@
 #datePicker{
 	max-width : 250px;
 }
+
+.NewsBlock{
+	transition : all 0.5s;
+}
+
+.NewsBlock:hover {
+	cursor : pointer;
+	border : 2px solid;
+}

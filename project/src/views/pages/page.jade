@@ -24,15 +24,16 @@ block content
 							embed.newsIMG(src='/test/testNews.pdf#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
 						.carousel-item.h-100
 							embed.newsIMG(src='/test/testNews.pdf#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
-					button.carouselButtons.carousel-control-prev(type='button' data-bs-target="#carousel" data-bs-slide='prev')
-						span.carousel-control-prev-icon(aria-hidden='true')
+					span.carouselButtons.carousel-control-prev(style="pointer-events: none;")
+						span#prev.carousel-control-prev-icon(type='button' aria-hidden='true' data-bs-target="#carousel" data-bs-slide='prev' style="pointer-events: auto;")
 						span.visually-hidden Previous
-					button.carouselButtons.carousel-control-next(type='button' data-bs-target="#carousel" data-bs-slide='next')
-						span.carousel-control-next-icon(aria-hidden='true')
+					span.carouselButtons.carousel-control-next(style="pointer-events: none;")
+						span#next.carousel-control-next-icon(type='button' aria-hidden='true' data-bs-target="#carousel" data-bs-slide='next' style="pointer-events: auto;")
 						span.visually-hidden Next
 			.col-md-6.h-100
 				.row-4.h-25
 					#Summary.w-100.h-100
+						hello world
 				.row-8.h-75
 					#WordCloud.w-100.h-100
 	script(src='/javascripts/page.js')

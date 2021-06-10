@@ -31,6 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/data', express.static(path.join('/workspace/GB/pipeline', 'data')));
 
 app.use('/', router);
 

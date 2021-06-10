@@ -1,3 +1,7 @@
-https://www.daterangepicker.com/#usage
+-개발자 신송판-
 
-필터 데이트 셀렉터 구현중
+-박재현 수정내역-
+
+06/09
+[src/views/pages/page.jade] carouselButtons 작동 수정 (화살표 only 작동)
+[public/javascripts/pages.js] ajax 작동부 틀 생성

@@ -11,5 +11,21 @@ $(function($){
 		}
 		console.log(maxScroll, scroll);
 		$(".newsIMG").scrollTop(scroll);
-});
+	});
 })
+
+$("#next").click(function() {
+	$.ajax({
+		type: "POST",
+		url: "/news/1/next",
+		dataType: 'json',
+		success: function(res) {
+			alert(res);
+			console.log("loaded");
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+			console.log("failed");
+		}
+	});
+});

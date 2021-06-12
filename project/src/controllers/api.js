@@ -5,8 +5,10 @@ const {Op} = require('sequelize');
 
 APIController.getNewsByFilter = async (req, res, next) => {
 	const pid = req.params.pid;
-	const {start, end, keyword, page, perPage} = req.query;
+	let {start, end, keyword, page, perPage} = req.query;
 	
+	page = page || 1;
+	perPage = perPage || 9;
 	
 	const includeClause = keyword ? {
 			model : models.Keyword,
@@ -20,7 +22,8 @@ APIController.getNewsByFilter = async (req, res, next) => {
 		perPage : perPage,
 		where : {
 			issueDate : {
-				$between: [start, end]
+				[Op.gte] : start,
+				[Op.lte] : end
 			}
 		},
 		include : includeClause,

@@ -2,9 +2,9 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
   var News = sequelize.define('news', {
-    issueNumber: {
-      	type : DataTypes.INTEGER,
-      	allowNull : true,
+    mainImageURL: {
+      	type : DataTypes.STRING,
+      	allowNull : false,
     },
     issueDate : {
 		type : DataTypes.DATE,

@@ -14,14 +14,24 @@ $(function($){
 	});
 })
 
+
+let nowPage = 1;
 $("#next").click(function() {
+	let code = window.location.href;
+	code = code.slice(code.indexOf("/", 10), code.length);
+	
+	let param = { "page" : nowPage };
+	
 	$.ajax({
 		type: "POST",
-		url: "/news/1/next",
+		url: code + "/next",
+		data: param,
 		dataType: 'json',
 		success: function(res) {
-			alert(res);
+			$("#Summary").html(res.pageImageURL);
+			nowPage++;
 			console.log("loaded");
+			console.log("nowPage: " + nowPage);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(errorThrown);

@@ -1,7 +1,6 @@
 import os
 import shutil
-# 함수나 클래스는 이 파일에 별도로 선언하고 사용!!
-import lib
+from pdf2image import convert_from_path
 
 
 # 파일 파싱하는 부분 
@@ -14,6 +13,9 @@ publisher_list = os.listdir(base)
 for publisher in publisher_list:
     date_list = os.listdir(os.path.join(base, publisher))
     for date in date_list:
-        joined_path = os.path.join(base, publisher, date)
-        for i in range(15):
-            os.rename(os.path.join(joined_path, str(14-i)), os.path.join(joined_path, str(15-i)))
+        page_list = os.listdir(os.path.join(base, publisher, date))
+        for page in page_list:
+            joined_path = os.path.join(base, publisher, date, page)
+            converted = convert_from_path(os.path.join(joined_path, "news.pdf"), 500, single_file=True)
+            converted[0].save(os.path.join(joined_path, "news.jpg"), 'jpeg')
+            

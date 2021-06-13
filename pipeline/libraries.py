@@ -1,5 +1,6 @@
 import csv
 from operator import itemgetter
+import datetime
 
 def parse_keywords(src):
     ls = []
@@ -8,13 +9,16 @@ def parse_keywords(src):
         next(reader)
         for row in reader:
             ls.append({
-                "word" : row[0],
-                "count" : int(row[1]),
+                "word" : row[1],
+                "count" : int(row[2]),
             })
-    ls = sorted(ls, key=itemgetter('count'), reverse=True)
     for ind, item in enumerate(ls):
         if(ind > 0 and item["count"] == ls[ind-1]["count"]):
             item["rank"] = ls[ind-1]["rank"]
         else:
             item["rank"] = ind+1
     return ls
+
+
+def today():
+    return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Keyword.associate = (models) => {
     models.Keyword.belongsTo(models.Page);
+	models.Keyword.belongsTo(models.News);
   }
 
   return Keyword

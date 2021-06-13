@@ -40,7 +40,12 @@
 	transition : all 0.5s;
 }
 
+.overlay-keyword{
+	opacity : 0;
+}
+
 .NewsBlock:hover {
 	cursor : pointer;
 	border : 2px solid;
+	
 }

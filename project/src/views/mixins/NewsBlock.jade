@@ -1,7 +1,11 @@
-mixin NewsBlock(id, text, img)
-		.NewsBlock.card.w-100.h-100(nid=id)
-			img#mainImage.card-img-top(src=img)
+mixin NewsBlock(news)
+		.NewsBlock.card.w-100.h-100(nid=news&&news.id, style=news?"":"display : none")
+			img#mainImage.card-img-top(src=news&&news.mainImageURL)
+			.card-img-overlay
+				h4.card-title.overlay-keyword.mt-4 keyword1
+				h4.card-title.overlay-keyword.my-2 keyword2
+				h4.card-title.overlay-keyword.my-2 keyword3
 			.card-body
-				p#text.card-text= text
+				p#text.card-text= news&&moment(news.issueDate).format('YYYY년 MM월 DD일 발행')
 
 

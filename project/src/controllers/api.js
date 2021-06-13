@@ -29,6 +29,14 @@ APIController.getNewsByFilter = async (req, res, next) => {
 		include : includeClause,
 		order : [['issueDate', 'DESC']]
 	});
+	
+	await Promise.all(
+		newsList.map(async news => {
+			news.keywords = news.getKeywords({where : {rank : [1,2,3]}})
+		})
+	)
+	
+	
 	res.json({pagination, newsList});
 	
 	

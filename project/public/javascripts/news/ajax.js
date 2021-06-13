@@ -1,9 +1,11 @@
 $(function(){
 	const $start = $('#startDate');
-	$start.val(moment().format('YYYY-MM-DD'));
-	const $end = $('#endDate');
-	$end.val(moment().format('YYYY-MM-DD'));
-	$('input[name="daterange"]').daterangepicker({}, 
+	$start.val("2020-01-01");
+	const $end = $("2022-01-01");
+	$('input[name="daterange"]').daterangepicker({
+		startDate : "01/01/2020",
+		endDate : "01/01/2022"
+	}, 
 		function(start, end, label){
 			$start.val(moment(start).format('YYYY-MM-DD'));
 			$end.val(moment(end).format('YYYY-MM-DD'));
@@ -34,6 +36,13 @@ $(function(){
 	
 	$('.NewsBlock').click(function(){
 		window.location = '/news/'+$(this).attr('nid');
+	})
+	$('.NewsBlock').hover(function(){
+		$(this).find('.overlay-keyword').css('opacity', 1);
+		$(this).find('img').css('filter', 'blur(2px)')
+	}, function(){
+		$(this).find('.overlay-keyword').css('opacity', 0);
+		$(this).find('img').css('filter', 'blur(0)');
 	})
 	
 	

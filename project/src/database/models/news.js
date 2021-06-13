@@ -17,8 +17,9 @@ module.exports = (sequelize, DataTypes) => {
 
 
   News.associate = (models) => {
-	models.News.belongsTo(models.Publisher)
+	models.News.belongsTo(models.Publisher);
     models.News.hasMany(models.Page);
+	models.News.hasMany(models.Keyword);
   }
 
   return News

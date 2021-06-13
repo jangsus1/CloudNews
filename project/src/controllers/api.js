@@ -8,19 +8,19 @@ APIController.getNewsByFilter = async (req, res, next) => {
 	let {start, end, keyword, page, perPage} = req.query;
 	
 	page = page || 1;
-	perPage = perPage || 9;
+	perPage = perPage || 6;
 	
 	const includeClause = keyword ? {
-			model : models.Keyword,
-			where : {
-				word : keyword
-			}
+		model : models.Keyword,
+		where : {word : keyword, rank : {[Op.lte] : 10}},
+		required : true
 	} : null;
 	
 	const [pagination, newsList] = await models.News.paginate({
 		page : page,
 		perPage : perPage,
 		where : {
+			publisherId : pid,
 			issueDate : {
 				[Op.gte] : start,
 				[Op.lte] : end
@@ -29,15 +29,11 @@ APIController.getNewsByFilter = async (req, res, next) => {
 		include : includeClause,
 		order : [['issueDate', 'DESC']]
 	});
-	
-	await Promise.all(
-		newsList.map(async news => {
-			news.keywords = news.getKeywords({where : {rank : [1,2,3]}})
-		})
+	let keywordList;
+	keywordList = await Promise.all(
+		newsList.map(async news => news.getKeywords({order : [['rank']], limit : 3}))
 	)
-	
-	
-	res.json({pagination, newsList});
+	res.json({pagination, newsList, keywordList});
 	
 	
 }

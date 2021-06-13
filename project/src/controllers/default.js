@@ -9,7 +9,7 @@ DefaultController.getMainPage = (req, res, next) => {
 
 DefaultController.getNews = async (req, res, next) => {
 	const pid = req.params.pid;
-	let pagination, newsList
+	let [pagination, newsList] = [{}, []]
 	try{
 		[pagination, newsList] = await models.News.paginate({
 			page : 1,

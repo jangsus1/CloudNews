@@ -30,9 +30,12 @@ block content
 					span.carouselButtons.carousel-control-next(style="pointer-events: none;")
 						span#next.carousel-control-next-icon(type='button' aria-hidden='true' data-bs-target="#carousel" data-bs-slide='next' style="pointer-events: auto;")
 						span.visually-hidden Next
-			.col-md-6.h-100
+			.col-md-3.h-100
+				canvas#container(width="200" height="380" style="background: #fff")
+			.col-md-3.h-100
 				.row-4.h-25
 					#Summary.w-100.h-100 hello world
 				.row-8.h-75
 					#WordCloud.w-100.h-100
+	script(src='https://cdn.jsdelivr.net/npm/chart.js')
 	script(src='/javascripts/page.js')

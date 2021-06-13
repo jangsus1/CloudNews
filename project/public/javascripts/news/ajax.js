@@ -1,7 +1,8 @@
 $(function(){
 	const $start = $('#startDate');
 	$start.val("2020-01-01");
-	const $end = $("2022-01-01");
+	const $end = $("#endDate");
+	$end.val("2022-01-01");
 	$('input[name="daterange"]').daterangepicker({
 		startDate : "01/01/2020",
 		endDate : "01/01/2022"
@@ -18,16 +19,19 @@ $(function(){
 		const end = $end.val();
 		const page = 1;
 		$.get( "/api/publishers/"+$(this).attr('pid')+"/news?start="+start+"&end="+end+(keyword && "&keyword="+keyword)+(page && "&page="+page), function(data){
-			const {pagination, newsList} = data;
+			const {pagination, newsList, keywordList} = data;
 			console.log(data)
 			$('.newsCol').css('display', 'none')
 			
-			newsList.map((news, ind) => {
+			newsList.forEach((news, ind) => {
 				const el = $('#item'+(ind+1))
 				el.css('display', 'flex')
 				el.find('.newsBlock').attr('nid', news.id)
 				el.find('#mainImage').attr('src', news.mainImageURL)
 				el.find('#text').text(moment(news.issueDate).format('YYYY년 MM월 DD일 발행'))
+				el.find('#key1').text("1. "+keywordList[ind][0].word)
+				el.find('#key2').text("2. "+keywordList[ind][1].word)
+				el.find('#key3').text("3. "+keywordList[ind][2].word)
 			})
 			
 		})

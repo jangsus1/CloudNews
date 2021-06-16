@@ -10,3 +10,7 @@
 [src/controllers/default.js] DefaultController 기능 추가 (getPrevPage, getNextPage)
 [src/routes/index.js] 추가한 기능 작동에 대한 post 추가
 [public/javascripts/page.js] 다음 페이지 정보 로드 구현
+
+06/13
+[public/javascript/page.js] 키워드 그래프 스크립트 추가
+[src/views/pages/page.jade] 키워드 그래프 추가 (태그 및 스크립트 로드)

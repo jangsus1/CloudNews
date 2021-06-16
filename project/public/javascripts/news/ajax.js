@@ -27,7 +27,9 @@ $(function(){
 				const el = $('#item'+(ind+1))
 				el.css('display', 'flex')
 				el.find('.newsBlock').attr('nid', news.id)
-				el.find('#mainImage').attr('src', news.mainImageURL)
+				el.find('.mainImage').attr('src', news.mainImageURL)
+				el.find('.mainImage').css('display', 'none')
+				el.find('.spinner-border').css('display', 'block')
 				el.find('#text').text(moment(news.issueDate).format('YYYY년 MM월 DD일 발행'))
 				el.find('#key1').text("1. "+keywordList[ind][0].word)
 				el.find('#key2').text("2. "+keywordList[ind][1].word)
@@ -42,12 +44,17 @@ $(function(){
 		window.location = '/news/'+$(this).attr('nid');
 	})
 	$('.NewsBlock').hover(function(){
-		$(this).find('.overlay-keyword').css('opacity', 1);
-		$(this).find('img').css('filter', 'blur(2px)')
+		$(this).find('.overlay-keyword').css('opacity', 0.8);
+		$(this).find('img').css('filter', 'blur(3px)')
 	}, function(){
 		$(this).find('.overlay-keyword').css('opacity', 0);
 		$(this).find('img').css('filter', 'blur(0)');
 	})
 	
-	
 })
+
+$('img.mainImage').on('load', function(){
+		console.log("hehehe")
+		$(this).css('display', 'block');
+		$(this).prev().css('display', 'none')
+	})

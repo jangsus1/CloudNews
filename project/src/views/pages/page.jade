@@ -1,34 +1,19 @@
 extends ../layouts/header.jade
 
 block content
-	nav#mainNav.navbar.navbar-expand-lg.bg-secondary.text-uppercase.fixed-top.navbar-shrink
-		.container
-			a.navbar-brand(href='/') 국방뉴스
-			button.navbar-toggler.text-uppercase.font-weight-bold.bg-primary.text-white.rounded(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
-				| Menu 
-				i.fas.fa-bars
-			#navbarResponsive.collapse.navbar-collapse
-				ul.navbar-nav.ms-auto
-					li.nav-item.mx-0.mx-lg-1
-						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/news/gb') News1
-					li.nav-item.mx-0.mx-lg-1
-						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/news/gb') News2
-					li.nav-item.mx-0.mx-lg-1
-						a.nav-link.py-3.px-0.px-lg-3.rounded(href='/news/gb') News3
 	.container-fluid#MainSection.marginForNavbar.h-100
 		.row.h-100
-			.col-md-6.h-100#NewsImage
-				#carousel.carousel.slide(data-bs-interval="false").h-100.carousel-dark
+			.col-md-6.h-100#NewsImage.p-0
+				#carousel.carousel.slide(data-bs-interval=false).h-100.carousel-dark
 					.carousel-inner.h-100
-						.carousel-item.active.h-100
-							embed.newsIMG(src='/test/testNews.pdf#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
-						.carousel-item.h-100
-							embed.newsIMG(src='/test/testNews.pdf#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
-					span.carouselButtons.carousel-control-prev(style="pointer-events: none;")
-						span#prev.carousel-control-prev-icon(type='button' aria-hidden='true' data-bs-target="#carousel" data-bs-slide='prev' style="pointer-events: auto;")
+						each page, index in news.pages
+							.carousel-item.h-100(class=index==0?'active':'')
+								embed.newsIMG(src=page.pageImageURL+'#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
+					span.carouselButtons.carousel-control-prev
+						span#prev.carousel-control-prev-icon(type='button' aria-hidden='true')
 						span.visually-hidden Previous
-					span.carouselButtons.carousel-control-next(style="pointer-events: none;")
-						span#next.carousel-control-next-icon(type='button' aria-hidden='true' data-bs-target="#carousel" data-bs-slide='next' style="pointer-events: auto;")
+					span.carouselButtons.carousel-control-next
+						span#next.carousel-control-next-icon(type='button' aria-hidden='true')
 						span.visually-hidden Next
 			.col-md-3.h-100
 				canvas#container(width="200" height="380" style="background: #fff")
@@ -37,5 +22,7 @@ block content
 					#Summary.w-100.h-100 hello world
 				.row-8.h-75
 					#WordCloud.w-100.h-100
+	script.
+		var pages = !{JSON.stringify(news.pages)};
 	script(src='https://cdn.jsdelivr.net/npm/chart.js')
 	script(src='/javascripts/page.js')

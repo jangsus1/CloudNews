@@ -1,58 +1,36 @@
-$(function($){
-	var scroll = 0;
-	var maxScroll = $(".newsIMG").prop('scrollHeight')-$(".newsIMG").height();
-	$(".carouselButtons").on("wheel", function(e){
-		
-		if(e.originalEvent.deltaY < 0 && scroll > 0) {
-		scroll -= 10;
-		}
-		else if(e.originalEvent.deltaY > 0 && scroll < maxScroll){
-			scroll += 10;
-		}
-		console.log(maxScroll, scroll);
-		$(".newsIMG").scrollTop(scroll);
-	});
-})
 
 // ajax
-let nowPage = 1;
-$("#next").click(function() {
-	let code = window.location.href;
-	code = code.slice(code.indexOf("/", 10), code.length);
-	
-	let param = { "page" : nowPage };
-	
-	$.ajax({
-		type: "POST",
-		url: code + "/next",
-		data: param,
-		dataType: 'json',
-		success: function(res) {
-			$("#Summary").html(res.pageImageURL);
-			nowPage++;
-			console.log("loaded");
-			console.log("nowPage: " + nowPage);
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown) {
-			alert(errorThrown);
-			console.log("failed");
-		}
-	});
-});
+var currentPageNum = 1;
+const $next = $("#next");
+const $prev = $("#prev");
 
 // dynamic graph
 // setup
-const DATA_COUNT = 20;
-const NUMBER_CFG = { count: DATA_COUNT, min: 1, max: 100 };
 
-const labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-			    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'];
-const data = {
+
+var graph = null;
+
+function createGraph(){
+	const current = pages[currentPageNum-1];
+	if(!current) return;
+	const {labels, values} = current.keywords.reduce((acc, k) => {
+		acc.labels.push(k.word);
+		acc.values.push(k.count);
+		return acc;
+	}, {labels:[], values:[]})
+	
+	if (graph) {
+		graph.data.datasets[0].data = values;
+		graph.data.labels = labels;
+		graph.update();
+	}
+	else {
+		const data = {
 	labels: labels,
     datasets: [
         {
 			label: false,
-			data: [12, 19, 2, 5, 2, 3, 12, 19, 2, 5, 2, 3, 12, 19, 2, 5, 2, 3, 12, 19],
+			data: values,
 			backgroundColor: [
 				'rgba(255, 99, 132, 0.2)',
 				'rgba(54, 162, 235, 0.2)',
@@ -98,38 +76,13 @@ const data = {
 				'rgba(54, 162, 235, 1)'
 			],
 			borderWidth: 1
-		}],
-	borderColor: 'rgb(75, 192, 192)',
-	backgroundColor: 'rgb(90, 207, 207)',
-};
-
-// config
-const config = {
+			}],
+		borderColor: 'rgb(75, 192, 192)',
+		backgroundColor: 'rgb(90, 207, 207)',
+	};
+	const config = {
     type: 'bar',
-    data: data/*{
-		labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-		datasets: [{
-			label: '# of Votes',
-			data: [12, 19, 2, 5, 2, 3],
-			backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-		}]
-	}*/,
+    data: data,
     options: {
         indexAxis: 'y',
         // Elements options apply to all of the options unless overridden in a dataset
@@ -158,14 +111,13 @@ const config = {
 
                 callbacks: {
                     title: function (tooltipItems, data) {},
-
                     label: function (tooltipItems, data) {
                         return (
                             '  ' +
                             tooltipItems.label +
-                            ' 빈도수 ' +
+                            ' : ' +
                             tooltipItems.formattedValue +
-                            '  '
+                            '회 '
                         );
                     },
                 },
@@ -175,16 +127,40 @@ const config = {
             },
             title: {
                 display: true,
-                text: 'Keyword bla bla',
+                text: '키워드 분석 차트',
             }
         },
-    },
-};
+   	},
+	};
+		const ctx = $("#container")[0].getContext('2d');
+		graph =  new Chart(ctx, config);
+	}
+	
+}
 
-// chart
+createGraph();
 
-let ctx = $("#container")[0].getContext('2d');
-let chart = new Chart(ctx, config);
+const carousel = new bootstrap.Carousel(document.querySelector('#carousel'))
+
+
+$next.click(function() {
+	if(currentPageNum < pages.length) {
+		currentPageNum++;
+		createGraph()
+		carousel.next();
+	}
+	
+	
+});
+
+$prev.click(function() {
+	if(currentPageNum > 1) {
+		currentPageNum--;
+		createGraph()
+		carousel.prev();
+	}
+	
+});
 
 // actions
 // const actions = [

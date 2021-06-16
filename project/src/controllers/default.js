@@ -36,9 +36,17 @@ DefaultController.getNews = async (req, res, next) => {
 }
 
 DefaultController.getPage = async (req, res, next) => {
-	
-	
-	res.render('pages/page');
+	const nid = req.params.nid;
+	const news = await models.News.findByPk(nid, {
+		include : {
+			model : models.Page,
+			include : models.Keyword
+		},
+		order : [[models.Page, 'pageNumber', 'ASC'], [models.Page, models.Keyword, 'rank', 'ASC']],
+		plain : true
+		
+	})
+	res.render('pages/page', {news});
 }
 
 DefaultController.getPrevPage = async (req, res, next) => {

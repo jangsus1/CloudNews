@@ -1,3 +1,30 @@
+.masthead {
+  padding-top: calc(2rem + 74px);
+  padding-bottom: 5rem;
+}
+.masthead .masthead-heading {
+  font-size: 2.75rem;
+  line-height: 2.75rem;
+}
+.masthead .masthead-subheading {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    padding-top: calc(2rem + 104px);
+    padding-bottom: 6rem;
+  }
+  .masthead .masthead-heading {
+    font-size: 4rem;
+    line-height: 3.5rem;
+  }
+  .masthead .masthead-subheading {
+    font-size: 1.5rem;
+  }
+}
+
+
 
 #Summary {
 	background-color : gray;
@@ -42,6 +69,7 @@
 
 .overlay-keyword{
 	opacity : 0;
+	background-color : #74BDCB;
 }
 
 .NewsBlock:hover {

@@ -4,7 +4,7 @@ block content
 	// Masthead
 	header.masthead.bg-primary.text-white.text-center
 		.container.d-flex.align-items-center.flex-column
-			h1.masthead-heading.text-uppercase.mb-0 GookBang News
+			h1.masthead-heading.text-uppercase.mb-0 국방 늬-우스
 			// Icon Divider
 			.divider-custom.divider-light
 				.divider-custom-line
@@ -12,9 +12,20 @@ block content
 					i.fas.fa-star
 				.divider-custom-line
 			// Masthead Subheading
-			p.masthead-subheading.font-weight-light.mb-0 All-in-one Military News Analyzing Service
-
-	// Portfolio Section
+			p.masthead-subheading.font-weight-light.mb-0 국방기관 발행 신문 분석 및 시각화 서비스
+	
+	section#description1.page-section.portfolio.bg-light
+		.container-fluid
+			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 신문 데이터 가공
+			
+	section#description2.page-section.portfolio.bg-light
+		.container-fluid
+			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 키워드 추출 및 분석
+			
+	section#description3.page-section.portfolio.bg-light
+		.container-fluid
+			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 분석 정보 시각화
+			
 	section#portfolio.page-section.portfolio
 		.container-fluid
 			// Portfolio Section Heading
@@ -55,106 +66,16 @@ block content
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
 								img.img-fluid(src='images/portfolio/gongsa.png', alt='...')
-						.row.news-item
+						.row.news-item.last
 							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/5')
 								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
 									.portfolio-item-caption-content.text-center.text-white
 										i.fas.fa-plus.fa-3x
-								img.img-fluid(src='', alt='...')
-						.row.news-item.last
-							a.portfolio-item.border.border-primary.border-3.col-3.mx-auto(href='/publishers/6')
-								.portfolio-item-caption.d-flex.align-items-center.justify-content-center.h-100.w-100
-									.portfolio-item-caption-content.text-center.text-white
-										i.fas.fa-plus.fa-3x
-								img.img-fluid(src='', alt='...')
+								img.img-fluid(src='images/portfolio/haesa.png', alt='...')
 				.col-1.d-grid
 					button.btn.btn-lg#newsCarouselRight
 						i.fa.fa-chevron-right
 		script(src='/javascripts/main/carousel.js')
-	// About Section
-	section#about.page-section.bg-primary.text-white.mb-0
-		.container
-			// About Section Heading
-			h2.page-section-heading.text-center.text-uppercase.text-white About
-			// Icon Divider
-			.divider-custom.divider-light
-				.divider-custom-line
-				.divider-custom-icon
-					i.fas.fa-star
-				.divider-custom-line
-			// About Section Content
-			.row
-				.col-lg-4.ms-auto
-					p.lead
-						| Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.
-				.col-lg-4.me-auto
-					p.lead
-						| You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!
-			// About Section Button
-			.text-center.mt-4
-				a.btn.btn-xl.btn-outline-light(href='https://startbootstrap.com/theme/freelancer/')
-					i.fas.fa-download.me-2
-					| Free Download!
-
-	// Contact Section
-	section#contact.page-section
-		.container
-			// Contact Section Heading
-			h2.page-section-heading.text-center.text-uppercase.text-secondary.mb-0 Contact Me
-			// Icon Divider
-			.divider-custom
-				.divider-custom-line
-				.divider-custom-icon
-					i.fas.fa-star
-				.divider-custom-line
-			// Contact Section Form
-			.row.justify-content-center
-				.col-lg-8.col-xl-7
-					form
-						.form-floating
-							input#inputName.form-control(type='text' placeholder='Enter your name...')
-							label(for='inputName') Name
-						.form-floating
-							input#inputEmail.form-control(type='email' placeholder='Enter your email...')
-							label(for='inputEmail') Email address
-						.form-floating
-							input#inputPhone.form-control(type='tel' placeholder='Enter your phone number...')
-							label(for='inputPhone') Phone Number
-						.form-floating
-							textarea#inputMessage.form-control(placeholder='Enter your message here...', style='height: 12rem;')
-							label(for='inputMessage') Message
-						br
-						button.btn.btn-primary.btn-xl(type='submit') Send
-
-	// Footer
-	footer.footer.text-center
-		.container
-			.row
-				// Footer Location
-				.col-lg-4.mb-5.mb-lg-0
-					h4.text-uppercase.mb-4 Location
-					p.lead.mb-0
-						| 2215 John Daniel Drive
-						br
-						| Clark, MO 65243
-				// Footer Social Icons
-				.col-lg-4.mb-5.mb-lg-0
-					h4.text-uppercase.mb-4 Around the Web
-					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
-						i.fab.fa-fw.fa-facebook-f
-					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
-						i.fab.fa-fw.fa-twitter
-					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
-						i.fab.fa-fw.fa-linkedin-in
-					a.btn.btn-outline-light.btn-social.mx-1(href='#!')
-						i.fab.fa-fw.fa-dribbble
-				// Footer About Text
-				.col-lg-4
-					h4.text-uppercase.mb-4 About Freelancer
-					p.lead.mb-0
-						| Freelance is a free to use, MIT licensed Bootstrap theme created by 
-						a(href='http://startbootstrap.com') Start Bootstrap
-						| .
 
 	// Copyright Section
 	div.copyright.py-4.text-center.text-white

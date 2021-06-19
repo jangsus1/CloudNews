@@ -46,6 +46,7 @@ DefaultController.getPage = async (req, res, next) => {
 		plain : true
 		
 	})
+	console.log(news)
 	res.render('pages/page', {news});
 }
 

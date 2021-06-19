@@ -132,7 +132,7 @@ function createGraph(){
         },
    	},
 	};
-		const ctx = $("#container")[0].getContext('2d');
+		const ctx = document.getElementById("graph").getContext('2d');
 		graph =  new Chart(ctx, config);
 	}
 	
@@ -140,7 +140,9 @@ function createGraph(){
 
 createGraph();
 
-const carousel = new bootstrap.Carousel(document.querySelector('#carousel'))
+const carousel = new bootstrap.Carousel(document.querySelector('#carousel'), {
+	interval : false
+})
 
 
 $next.click(function() {

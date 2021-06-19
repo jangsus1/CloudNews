@@ -10,6 +10,25 @@ import traceback
 # ex : narasarang/2021-01-01/1/image.pdf
 # ex : narasarang/2021-01-01/2/keyword.csv
 
+conn = mysql.connect(host='localhost', user='root', password='1234', db='gb_db')
+
+try :
+    curs = conn.cursor()
+    delete_keywords = "delete from keywords"
+    delete_pages = "delete from pages"
+    delete_news = "delete from news"
+    curs.execute(delete_keywords)
+    curs.execute(delete_pages)
+    curs.execute(delete_news)
+    conn.commit()
+except Exception as ex:
+    conn.rollback()
+    print(ex)
+    traceback.print_exc()
+    
+finally:
+    conn.close()
+
 base = "./data"
 
 #  나라사랑 코드
@@ -26,7 +45,7 @@ for date in date_list:
         print(page+", ", end='')
         joined_path = os.path.join(base, publisher, date, page)
         pageImageURL = os.path.join(joined_path, "news.pdf")[1:]
-        wordcloudURL = "" # os.path.join(joined_path, "wordcloud.img")[1:]
+        wordcloudURL = os.path.join(joined_path, "wordcloud.jpg")[1:]
         parsedList, keyword_dict = parse_page_keywords(os.path.join(joined_path, "keyword.csv"), keyword_dict)
         pages.append({
             "pageImageURL" : pageImageURL,
@@ -57,7 +76,7 @@ try :
     curs = conn.cursor()
     for news in ns:
         newsInsertSQL = "insert into news (mainImageURL, issueDate, createdAt, updatedAt,  publisherId) values (%s, %s, %s, %s, %s)"
-        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 1)
+        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 2)
         curs.execute(newsInsertSQL, newsInsertVal)
         newsId = curs.lastrowid
         for page in news["pages"]:
@@ -96,7 +115,7 @@ for date in date_list:
         print(page+", ", end='')
         joined_path = os.path.join(base, publisher, date, page)
         pageImageURL = os.path.join(joined_path, "news.pdf")[1:]
-        wordcloudURL = "" # os.path.join(joined_path, "wordcloud.img")[1:]
+        wordcloudURL = os.path.join(joined_path, "wordcloud.jpg")[1:]
         parsedList, keyword_dict = parse_page_keywords(os.path.join(joined_path, "keyword.csv"), keyword_dict)
         pages.append({
             "pageImageURL" : pageImageURL,
@@ -127,7 +146,7 @@ try :
     curs = conn.cursor()
     for news in gb:
         newsInsertSQL = "insert into news (mainImageURL, issueDate, createdAt, updatedAt,  publisherId) values (%s, %s, %s, %s, %s)"
-        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 2)
+        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 1)
         curs.execute(newsInsertSQL, newsInsertVal)
         newsId = curs.lastrowid
         for page in news["pages"]:
@@ -164,7 +183,7 @@ for date in date_list:
         print(page+", ", end='')
         joined_path = os.path.join(base, publisher, date, page)
         pageImageURL = os.path.join(joined_path, "news.pdf")[1:]
-        wordcloudURL = "" # os.path.join(joined_path, "wordcloud.img")[1:]
+        wordcloudURL = os.path.join(joined_path, "wordcloud.jpg")[1:]
         parsedList, keyword_dict = parse_page_keywords(os.path.join(joined_path, "keyword.csv"), keyword_dict)
         pages.append({
             "pageImageURL" : pageImageURL,

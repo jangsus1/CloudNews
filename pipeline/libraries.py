@@ -30,6 +30,7 @@ def parse_news_keywords(dic):
             item["rank"] = ls[ind-1]["rank"]
         else:
             item["rank"] = ind+1
-    return ls
+            # top 10만 저장함
+    return ls[:10]
 def today():
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')

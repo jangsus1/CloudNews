@@ -10,6 +10,16 @@
   font-size: 1.25rem;
 }
 
+.pdfBar{
+	width : 100%;
+	background-color : skyblue;	
+	z-index : 10;
+	opacity : 0;
+	transition : 0.3s all;
+}
+
+
+
 @media (min-width: 992px) {
   .masthead {
     padding-top: calc(2rem + 104px);
@@ -22,6 +32,10 @@
   .masthead .masthead-subheading {
     font-size: 1.5rem;
   }
+	
+	.pdfBar{
+		width : 41.66666%;
+	}
 }
 
 
@@ -76,4 +90,22 @@
 	cursor : pointer;
 	border : 2px solid;
 	
+}
+
+.chart-container {
+	width : 100%;
+	height : 100%;
+	position : relative;
+}
+
+.h-8 {
+	height : 8%;
+}
+
+.h-92 {
+	height : 92%;
+}
+
+#title{
+	border : solid 1px;
 }

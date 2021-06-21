@@ -1,34 +1,44 @@
 
 // ajax
 var currentPageNum = 1;
-const $next = $("#next");
-const $prev = $("#prev");
+var isHover = false;
+const $next = $(".nextButton");
+const $prev = $(".prevButton");
 
 // dynamic graph
 // setup
 
 
-var graph = null;
+var chart = null;
+
+const $keywords = $('.keywords');
+const $tooltips = $('.tooltips');
+const $wordcloud = $('#wordcloud');
+const $pageNumber = $('#pageNumber');
+const $pageLocator =  $('#pageLocator');
+const $pdfBar = $('.pdfBar');
 
 function createGraph(){
 	const current = pages[currentPageNum-1];
 	if(!current) return;
-	const {labels, values} = current.keywords.reduce((acc, k) => {
+	const {labels, values} = current.keywords.reduce((acc, k, ind) => {
 		acc.labels.push(k.word);
 		acc.values.push(k.count);
 		return acc;
 	}, {labels:[], values:[]})
 	
-	if (graph) {
-		graph.data.datasets[0].data = values;
-		graph.data.labels = labels;
-		graph.update();
+	if (chart) {
+		chart.data.datasets[0].data = values;
+		chart.data.datasets[1].data = values;
+		chart.data.labels = labels;
+		chart.update();
 	}
 	else {
 		const data = {
 	labels: labels,
     datasets: [
         {
+			type : 'bar',
 			label: false,
 			data: values,
 			backgroundColor: [
@@ -76,24 +86,24 @@ function createGraph(){
 				'rgba(54, 162, 235, 1)'
 			],
 			borderWidth: 1
-			}],
+		}, {
+			type : 'line',
+			data : values
+		}],
 		borderColor: 'rgb(75, 192, 192)',
 		backgroundColor: 'rgb(90, 207, 207)',
 	};
 	const config = {
-    type: 'bar',
     data: data,
     options: {
         indexAxis: 'y',
-        // Elements options apply to all of the options unless overridden in a dataset
-        // In this case, we are setting the border of each horizontal bar to be 2px wide
         elements: {
             bar: {
                 borderWidth: 2,
             },
         },
-		
         responsive: true,
+		maintainAspectRatio : false,
         plugins: {
             tooltip: {
                 bodyFont: {
@@ -132,97 +142,92 @@ function createGraph(){
         },
    	},
 	};
-		const ctx = document.getElementById("graph").getContext('2d');
-		graph =  new Chart(ctx, config);
+		const ctx = document.getElementById("chart").getContext('2d');
+		chart =  new Chart(ctx, config);
 	}
 	
 }
 
-createGraph();
+createGraph()
 
-const carousel = new bootstrap.Carousel(document.querySelector('#carousel'), {
+const carousel = new bootstrap.Carousel(document.getElementById('carousel'), {
 	interval : false
 })
+
+document.getElementById('carousel').addEventListener('slid.bs.carousel', function () {
+  	if(currentPageNum < pages.length) $next.css('pointer-events', 'auto');
+	if(currentPageNum > 1) $prev.css('pointer-events', 'auto');
+})
+
+function updateWords(){
+	const keywordsList = pages[currentPageNum-1].keywords;
+	for(let ind=0;ind<10;ind++){
+		$keywords[ind].innerHTML = keywordsList[ind] ? keywordsList[ind].word : "";
+		$tooltips[ind].title = keywordsList[ind] ? "카운트 : "+keywordsList[ind].count+"회" : "";
+		$tooltips[ind].setAttribute('data-bs-original-title', $tooltips[ind].title)
+	}
+	
+}
+
+
+function paint(){
+	$wordcloud.attr('src', pages[currentPageNum-1].wordcloudURL)
+	$pageNumber.html(currentPageNum+"면");
+	$pageLocator.val(currentPageNum);
+	updateWords()
+	createGraph();
+	carousel.to(currentPageNum-1);
+}
+
+
+
 
 
 $next.click(function() {
 	if(currentPageNum < pages.length) {
+		$next.css('pointer-events', 'none');
 		currentPageNum++;
-		createGraph()
-		carousel.next();
+		paint()
 	}
 	
-	
 });
+
+
 
 $prev.click(function() {
 	if(currentPageNum > 1) {
+		$prev.css('pointer-events', 'none');
 		currentPageNum--;
-		createGraph()
-		carousel.prev();
+		paint()
 	}
-	
 });
 
-// actions
-// const actions = [
-//     {
-//         name: 'Randomize',
-//         handler(chart) {
-//             chart.data.datasets.forEach((dataset) => {
-//                 dataset.data = Utils.numbers({ count: chart.data.labels.length, min: 1, max: 100 });
-//             });
-//             chart.update();
-//         },
-//     },
-//     {
-//         name: 'Add Dataset',
-//         handler(chart) {
-//             const data = chart.data;
-//             const dsColor = Utils.namedColor(chart.data.datasets.length);
-//             const newDataset = {
-//                 label: 'Dataset ' + (data.datasets.length + 1),
-//                 backgroundColor: Utils.transparentize(dsColor, 0.5),
-//                 borderColor: dsColor,
-//                 borderWidth: 1,
-//                 data: Utils.numbers({ count: data.labels.length, min: 1, max: 100 }),
-//             };
-//             chart.data.datasets.push(newDataset);
-//             chart.update();
-//         },
-//     },
-//     {
-//         name: 'Add Data',
-//         handler(chart) {
-//             const data = chart.data;
-//             if (data.datasets.length > 0) {
-//                 data.labels = Utils.months({ count: data.labels.length + 1 });
 
-//                 for (var index = 0; index < data.datasets.length; ++index) {
-//                     data.datasets[index].data.push(Utils.rand(1, 100));
-//                 }
+$pageLocator.keypress(function(e){
+	if(e.which==13) {
+		$next.css('pointer-events', 'none');
+		$prev.css('pointer-events', 'none');
+		currentPageNum = $pageLocator.val();
+		paint()
+	}
+})
 
-//                 chart.update();
-//             }
-//         },
-//     },
-//     {
-//         name: 'Remove Dataset',
-//         handler(chart) {
-//             chart.data.datasets.pop();
-//             chart.update();
-//         },
-//     },
-//     {
-//         name: 'Remove Data',
-//         handler(chart) {
-//             chart.data.labels.splice(-1, 1); // remove the label first
 
-//             chart.data.datasets.forEach((dataset) => {
-//                 dataset.data.pop();
-//             });
 
-//             chart.update();
-//         },
-//     },
-// ];
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+
+$pdfBar.hover(()=>{
+		$pdfBar.css('opacity', 1)
+		isHover=true;
+	}, function(){
+	isHover=false;
+	setTimeout(()=>{
+		if(!isHover) {
+			$pdfBar.css('opacity', 0)
+		}
+	}, 1000);
+})
+

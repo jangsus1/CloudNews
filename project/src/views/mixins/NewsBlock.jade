@@ -2,12 +2,12 @@ mixin NewsBlock(news)
 		.NewsBlock.card.w-100.h-100.text-center(nid=news&&news.id, style=news?"":"display : none")
 			.spinner-border(role = 'status')
 			img.mainImage#mainImage.card-img-top(src=news&&news.mainImageURL style="display : none")
-			.card-img-overlay.overlay-keyword
-				h3 키워드 Top 3
-				h4#key1.card-title.mt-4= news&&"1. "+news.keywords[0].word
-				h4#key2.card-title.my-2= news&&"2. "+news.keywords[1].word
-				h4#key3.card-title.my-2= news&&"3. "+news.keywords[2].word
+			.card-img-overlay.overlay-keyword.bg-3
+				h2 키워드 Top 3
+				h3#key1.card-title.mt-4= news&&"1. "+news.keywords[0].word
+				h3#key2.card-title.my-2= news&&"2. "+news.keywords[1].word
+				h3#key3.card-title.my-2= news&&"3. "+news.keywords[2].word
 			.card-body
-				p#text.card-text= news&&moment(news.issueDate).format('YYYY년 MM월 DD일 발행')
+				h4#text.card-text= news&&moment(news.issueDate).format('YYYY년 MM월 DD일 발행')
 	
 

@@ -236,3 +236,71 @@ except Exception as ex:
     
 finally:
     conn.close()
+    
+#공사 코드
+print("육사신보")
+us = []
+publisher = "uksasinbo"
+date_list = os.listdir(os.path.join(base, publisher))
+for date in date_list:
+    print(date)
+    pages = []
+    page_list = os.listdir(os.path.join(base, publisher, date))
+    keyword_dict = {}
+    for page in page_list:
+        print(page+", ", end='')
+        joined_path = os.path.join(base, publisher, date, page)
+        pageImageURL = os.path.join(joined_path, "news.pdf")[1:]
+        wordcloudURL = os.path.join(joined_path, "wordcloud.jpg")[1:]
+        parsedList, keyword_dict = parse_page_keywords(os.path.join(joined_path, "keyword.csv"), keyword_dict)
+        pages.append({
+            "pageImageURL" : pageImageURL,
+            "wordcloudURL" : wordcloudURL,
+            "pageNumber" : int(page),
+            "keywords" : parsedList
+        })
+    print("페이지 완료")
+    print("뉴스 키워드 파싱")
+    news_keywords = parse_news_keywords(keyword_dict)
+    
+    mainImageURL = os.path.join(base, publisher, date,"1", "news.jpg")
+    if(not os.path.isfile(mainImageURL)):
+        print("메인이미지 생성")
+        convert_from_path(os.path.join(base, publisher, date,"1", "news.pdf"), 500, single_file=True)[0].save(mainImageURL, 'jpeg')
+    us.append({
+        "date" : date,
+        "pages" : pages,
+        "mainImageURL" : mainImageURL[1:],
+        "keywords" : news_keywords
+    })  
+        
+        
+conn = mysql.connect(host='localhost', user='root', password='1234', db='gb_db')
+
+
+try :
+    curs = conn.cursor()
+    for news in us:
+        newsInsertSQL = "insert into news (mainImageURL, issueDate, createdAt, updatedAt,  publisherId) values (%s, %s, %s, %s, %s)"
+        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 3)
+        curs.execute(newsInsertSQL, newsInsertVal)
+        newsId = curs.lastrowid
+        for page in news["pages"]:
+            pageInsertSQL = "insert into pages (pageNumber, pageImageURL, wordcloudURL, createdAt, updatedAt, newsId) values (%s, %s, %s, %s, %s, %s)"
+            pageInsertVal = (page["pageNumber"], page["pageImageURL"], page["wordcloudURL"], today(), today(), newsId)
+            curs.execute(pageInsertSQL, pageInsertVal)
+            pageId = curs.lastrowid
+            keywordInsertSQL = "insert into keywords (word, count, rank, createdAt, updatedAt, pageId) values (%s, %s, %s, %s, %s, %s)"
+            keywordInsertVal = [(k["word"], k["count"], k["rank"], today(), today(), pageId) for k in page["keywords"]]
+            curs.executemany(keywordInsertSQL, keywordInsertVal)
+        keywordInsertSQL = "insert into keywords (word, count, rank, createdAt, updatedAt, newsId) values (%s, %s, %s, %s, %s, %s)"
+        keywordInsertVal = [(k["word"], k["count"], k["rank"], today(), today(), newsId) for k in news["keywords"]]
+        curs.executemany(keywordInsertSQL, keywordInsertVal)
+    conn.commit()
+except Exception as ex:
+    conn.rollback()
+    print(ex)
+    traceback.print_exc()
+    
+finally:
+    conn.close()

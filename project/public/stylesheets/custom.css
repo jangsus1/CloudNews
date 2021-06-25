@@ -1,3 +1,64 @@
+
+#mainNav {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 700;
+}
+#mainNav .navbar-brand {
+  color: #fff;
+}
+#mainNav .navbar-nav {
+  margin-top: 1rem;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link {
+  color: #fff;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link:hover {
+  color: #A68572;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
+  color: #fff;
+}
+#mainNav .navbar-nav li.nav-item a.nav-link.active {
+  color: #1abc9c;
+}
+#mainNav .navbar-toggler {
+  font-size: 80%;
+  padding: 0.8rem;
+}
+
+@media (min-width: 992px) {
+  #mainNav {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    transition: padding-top 0.3s, padding-bottom 0.3s;
+  }
+  #mainNav .navbar-brand {
+    font-size: 1.75em;
+    transition: font-size 0.3s;
+  }
+  #mainNav .navbar-nav {
+    margin-top: 0;
+  }
+  #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
+    color: #fff;
+    background: #1abc9c;
+  }
+  #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+    color: #fff;
+    background: #1abc9c;
+  }
+
+  #mainNav.navbar-shrink {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  #mainNav.navbar-shrink .navbar-brand {
+    font-size: 1.5em;
+  }
+}
+
 .masthead {
   padding-top: calc(2rem + 74px);
   padding-bottom: 5rem;
@@ -12,10 +73,14 @@
 
 .pdfBar{
 	width : 100%;
-	background-color : skyblue;	
 	z-index : 10;
 	opacity : 0;
 	transition : 0.3s all;
+}
+
+#page-top {
+	margin-top : 74px;
+	height : calc(100% - 74px);
 }
 
 
@@ -36,31 +101,10 @@
 	.pdfBar{
 		width : 41.66666%;
 	}
-}
-
-
-
-#Summary {
-	background-color : gray;
-	width : 100%;
-}
-
-#WordCloud {
-	background-color : lightblue;
-}
-
-@media (min-width: 992px) {
-	#page-top {
-	margin-top : 104px;
-}
-}
-
-#page-top {
-	margin-top : 74px;
+	
 }
 
 .news-item {
-	-webkit-transition: -webkit-transform 0.5s ease;
     transition: transform 0.5s ease, display 0.25s ease;
 }
 
@@ -70,7 +114,7 @@
 
 .filterArea{
 	max-width : 300px;
-	background-color : lightgray;
+	min-width : 260px;
 }
 
 #datePicker{
@@ -83,7 +127,6 @@
 
 .overlay-keyword{
 	opacity : 0;
-	background-color : #74BDCB;
 }
 
 .NewsBlock:hover {
@@ -106,6 +149,23 @@
 	height : 92%;
 }
 
-#title{
-	border : solid 1px;
+.bg-1 {
+	background-color : #1D1426  !important;
 }
+
+.bg-2 {
+	background-color : #EBEDF2  !important;
+}
+
+.bg-3 {
+	background-color : #D9D2BF  !important;
+}
+
+.bg-4 {
+	background-color : #A68572  !important;
+}
+
+.bg-5 {
+	background-color : #8C6258  !important;
+}
+

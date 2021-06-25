@@ -3,6 +3,7 @@ include ../mixins/NewsBlock.jade
 
 block css
 	link(href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel='stylesheet')
+	link(rel='stylesheet' href='/stylesheets/calendar.css')
 block javascript
 	script(src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" type="text/javascript")
 	script(src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" type="text/javascript")
@@ -11,7 +12,7 @@ block javascript
 block content
 	.container-fluid.h-100
 		.row.h-100
-			.filterArea.col-4.p-0
+			.filterArea.col-4.p-0.bg-3
 				.px-4.h-100
 					h2.py-4 Filter
 					.datePicker
@@ -23,23 +24,54 @@ block content
 						span 포함된 키워드
 						input#keywordInput.form-control(type='text' name='keyword' placeholder='키워드를 입력하세요')
 					#searchButton.mt-2(pid=pid)
-						button.btn.btn-primary.float-end 검색
+						button#filterSearch.btn.float-end.bg-5.text-white 검색
+					.w-100.pt-5
+						.calendar.m-auto.mt-3
+							.calendar-header
+								span.month-picker#month-picker 2월
+								.year-picker
+									span.year-change
+									span#year 2021
+									span.year-change
+							.calendar-body
+								.calendar-week-day
+									div 일
+									div 월
+									div 화
+									div 수
+									div 목
+									div 금
+									div 토
+								.calendar-days
+					.w-100.mt-5.mx-auto.bg-white(style='max-width:230px; border-radius : 30px; padding : 20px;')
+						a(href='https://www.mpva.go.kr/mpva/index.do' target='_blank')
+							.w-100.mt-2.rounded.border.mx-auto(style='overflow:hidden')
+								img.img-fluid.mx-auto(src='/images/gukgabohun.png')
+						a(href='https://www.mnd.go.kr/mbshome/mbs/mnd/index.jsp' target='_blank')
+							.w-100.mt-2.rounded.border.mx-auto(style='overflow:hidden')
+								img.img-fluid.mx-auto(src='/images/gukbang.png')
+						a(href='https://www.kma.ac.kr:461/' target='_blank')
+							.w-100.mt-2.rounded.border.mx-auto(style='overflow:hidden')
+								img.img-fluid.mx-auto(src='/images/yuksa.png')
+						a(href='https://rokaf.airforce.mil.kr/afa/index.do' target='_blank')
+							.w-100.mt-2.rounded.border.mx-auto(style='overflow:hidden')
+								img.img-fluid.mx-auto(src='/images/gongsa.png')
 			.col-8
 				.newsListArea.container-fluid.mt-2
 					.row.w-100
-						.col-md-4.p-2.newsCol#item1
+						.col-lg-4.p-2.newsCol#item1
 							+NewsBlock(newsList[0])
-						.col-md-4.p-2.newsCol#item2
+						.col-lg-4.p-2.newsCol#item2
 							+NewsBlock(newsList[1])
-						.col-md-4.p-2.newsCol#item3
+						.col-lg-4.p-2.newsCol#item3
 							+NewsBlock(newsList[2])
 					.row.w-100
-						.col-md-4.p-2.newsCol#item4
+						.col-lg-4.p-2.newsCol#item4
 							+NewsBlock(newsList[3])
-						.col-md-4.p-2.newsCol#item5
+						.col-lg-4.p-2.newsCol#item5
 							+NewsBlock(newsList[4])
-						.col-md-4.p-2.newsCol#item6
+						.col-lg-4.p-2.newsCol#item6
 							+NewsBlock(newsList[5])
-		script(src='/javascripts/news/ajax.js')
-				
+	script(src='/javascripts/news/ajax.js')
+	script(src='/javascripts/news/calendar.js')
 				

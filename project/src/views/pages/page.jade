@@ -2,16 +2,18 @@ extends ../layouts/header.jade
 
 block content
 	.container-fluid#MainSection.marginForNavbar.h-100
-		.pdfBar.position-absolute(style='top:74px; left:0; height:45px;')
+		.pdfBar.position-absolute.bg-4(style='top:74px; left:0; height:45px;')
 			.row.h-100
 				.col-2.h-100
 					button.prevButton.btn.w-100.h-100(type='button' style='pointer-events:none;')
 						i.fas.fa-angle-double-left
-				.col-8.h-100.text-center
+				.col-3
+				.col-2.h-100.text-center
 					.pageLocater.mt-2.text-center
 						input#pageLocator.border.border-dark.border-1.mx-1(type='text' style='width:30px;' value=1)
 						span.px-3 /
 						span= news.pages.length
+				.col-3
 				.col-2.h-100
 					button.nextButton.btn.w-100.h-100(type='button')
 						i.fas.fa-angle-double-right
@@ -21,34 +23,34 @@ block content
 					.carousel-inner.h-100
 						each page, index in news.pages
 							.carousel-item.h-100(class=index==0?'active':'')
-								embed.newsIMG(src=page.pageImageURL+'#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
-					span.carouselButtons.carousel-control-prev
+								iframe.newsIMG(src=page.pageImageURL+'#toolbar=0&navpanes=0&scrollbar=0' type='application/pdf', width='100%', height='100%')
+					span.carouselButtons.carousel-control-prev(style='pointer-events:none')
 						span.prevButton.carousel-control-prev-icon(type='button' aria-hidden='true'  style='pointer-events : none')
 						span.visually-hidden Previous
-					span.carouselButtons.carousel-control-next
-						span.nextButton.carousel-control-next-icon(type='button' aria-hidden='true')
+					span.carouselButtons.carousel-control-next(style='pointer-events:none')
+						span.nextButton.carousel-control-next-icon(type='button' aria-hidden='true' style='pointer-events : auto')
 						span.visually-hidden Next
 			.col-lg-7.col-12.h-100.border.border-dark.border-1
 				.row.h-8
 					.col
-						h2.text-center.pt-2.mt-2#title 한눈에 보는 키워드 분석
+						h2.text-center.pt-2.mt-2#title.bg-3 한눈에 보는 키워드 분석
 				.row.h-92
 					.h-100.col-lg-5.border-end.border-dark.border-1
 						.row(style='height:5%')
 							.col-4.text-center
-								.p-1#date.border.border-dark.border-1= moment(news.issueDate).format('YYYY-MM-DD')
+								.p-1#date.rounded.bg-2= moment(news.issueDate).format('YYYY-MM-DD')
 							.col-2.text-center.p-0
-								.p-1#pageNumber.border.border-dark.border-1 1면
+								.p-1#pageNumber.rounded.bg-2 1면
 							.col-6.text-center
-								h5.p-1.border.border-dark.border-1 키워드 추출 결과
+								h5.p-1.rounded.bg-2 키워드 추출 결과
 						.row(style='height:95%')
-							.p-3
-								.chart-container.container.p-3.border.border-2
+							.p-3.h-100
+								.chart-container.container.p-3.border.border-2.h-100.rounded
 									canvas#chart
 					.h-100.col-lg-7
 						.row(style='height:35%')
 							.col-4
-								h4.p-1.text-center.border.border-dark.border-1 중심키워드
+								h5.p-1.text-center.rounded.bg-2 중심키워드
 								.table-responsive
 									table.table.table-hover
 										thead
@@ -61,7 +63,7 @@ block content
 													th= no
 													th= keywords[no-1].word
 							.col-8
-								h4.p-1.text-center.border.border-dark.border-1 상위 키워드 Top 10
+								h5.p-1.text-center.rounded.bg-2 상위 키워드 Top 10
 								.row
 									.col-6.pe-0
 										.table-responsive
@@ -74,10 +76,10 @@ block content
 													each no in [1,2,3,4,5]
 														tr.tooltips(data-bs-toggle="tooltip" title="카운트 : "+news.pages[0].keywords[no-1].count+"회")
 															th= no
-															th.keywords(id='keyword'+no)= news.pages[0].keywords[no-1].word 
+															th.keywords(id='keyword'+no)
 									.col-6.ps-0
 										.table-responsive
-											table.table
+											table.table.table-hover
 												thead
 													tr
 														th(scope='col') 순위
@@ -86,15 +88,15 @@ block content
 													each no in [6,7,8,9,10]
 														tr.tooltips(data-bs-toggle="tooltip" title="카운트 : "+news.pages[0].keywords[no-1].count+"회")
 															th= no
-															th.keywords(id='keyword'+no)= news.pages[0].keywords[no-1].word 
+															th.keywords(id='keyword'+no) 
 						p.mt-3(style='font-size : 5px;') ※ 중심 키워드는 단일 면이 아닌 해당 호에서 추출한 상위 키워드
 						.row(style='height:60%')
 							.col
 								.w-100.border-dark.border-top.border-1
-								h3.mt-4.p-1.text-center.border.border-dark.border-1 워드 클라우드
+								h4.mt-4.p-1.text-center.rounded.bg-2 워드 클라우드
 								.w-100.mb-4
-									img#wordcloud.img-fluid.w-100.border.border-dark.border-1(src=news.pages[0].wordcloudURL)
+									img#wordcloud.img-fluid.w-100.h-100.bg-2.border-dark.border-1(src=news.pages[0].wordcloudURL style='opacity : 0;')
 	script.
 		var pages = !{JSON.stringify(news.pages)};
 	script(src='https://cdn.jsdelivr.net/npm/chart.js')
-	script(src='/javascripts/page.js')
+	script(src='/javascripts/page/page.js')

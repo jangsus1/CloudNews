@@ -2,7 +2,7 @@ extends ../layouts/header.jade
 
 block content
 	.container-fluid#MainSection.marginForNavbar.h-100
-		.pdfBar.position-absolute.bg-4(style='top:74px; left:0; height:45px;')
+		.pdfBar.position-absolute.bg-2(style='top:74px; left:0; height:45px;')
 			.row.h-100
 				.col-2.h-100
 					button.prevButton.btn.w-100.h-100(type='button' style='pointer-events:none;')
@@ -33,16 +33,16 @@ block content
 			.col-lg-7.col-12.h-100.border.border-dark.border-1
 				.row.h-8
 					.col
-						h2.text-center.pt-2.mt-2#title.bg-3 한눈에 보는 키워드 분석
+						h2.text-center.pt-2.mt-2#title.bg-3.title-font 한눈에 보는 키워드 분석
 				.row.h-92
 					.h-100.col-lg-5.border-end.border-dark.border-1
 						.row(style='height:5%')
 							.col-4.text-center
-								.p-1#date.rounded.bg-2= moment(news.issueDate).format('YYYY-MM-DD')
+								.p-1#date.rounded.bg-2.basic-font= moment(news.issueDate).format('YYYY-MM-DD')
 							.col-2.text-center.p-0
-								.p-1#pageNumber.rounded.bg-2 1면
+								.p-1#pageNumber.rounded.bg-2.basic-font 1면
 							.col-6.text-center
-								h5.p-1.rounded.bg-2 키워드 추출 결과
+								.p-1.rounded.bg-2.basic-font 키워드 추출 결과
 						.row(style='height:95%')
 							.p-3.h-100
 								.chart-container.container.p-3.border.border-2.h-100.rounded
@@ -50,7 +50,7 @@ block content
 					.h-100.col-lg-7
 						.row(style='height:35%')
 							.col-4
-								h5.p-1.text-center.rounded.bg-2 중심키워드
+								.p-1.text-center.rounded.bg-2.basic-font 중심키워드
 								.table-responsive
 									table.table.table-hover
 										thead
@@ -63,7 +63,7 @@ block content
 													th= no
 													th= keywords[no-1].word
 							.col-8
-								h5.p-1.text-center.rounded.bg-2 상위 키워드 Top 10
+								h5.p-1.text-center.rounded.bg-2.basic-font 상위 키워드 Top 10
 								.row
 									.col-6.pe-0
 										.table-responsive
@@ -89,11 +89,11 @@ block content
 														tr.tooltips(data-bs-toggle="tooltip" title="카운트 : "+news.pages[0].keywords[no-1].count+"회")
 															th= no
 															th.keywords(id='keyword'+no) 
-						p.mt-3(style='font-size : 5px;') ※ 중심 키워드는 단일 면이 아닌 해당 호에서 추출한 상위 키워드
-						.row(style='height:60%')
-							.col
+						p.mt-4(style='font-size : 6px;') ※ 중심 키워드는 단일 면이 아닌 해당 호에서 추출한 상위 키워드
+						.row(style='height:55%')
+							.col.h-100
 								.w-100.border-dark.border-top.border-1
-								h4.mt-4.p-1.text-center.rounded.bg-2 워드 클라우드
+								.mt-4.p-1.text-center.rounded.bg-2.basic-font 워드 클라우드
 								.w-100.mb-4
 									img#wordcloud.img-fluid.w-100.h-100.bg-2.border-dark.border-1(src=news.pages[0].wordcloudURL style='opacity : 0;')
 	script.

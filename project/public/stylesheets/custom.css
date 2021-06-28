@@ -59,18 +59,6 @@
   }
 }
 
-.masthead {
-  padding-top: calc(2rem + 74px);
-  padding-bottom: 5rem;
-}
-.masthead .masthead-heading {
-  font-size: 2.75rem;
-  line-height: 2.75rem;
-}
-.masthead .masthead-subheading {
-  font-size: 1.25rem;
-}
-
 .pdfBar{
 	width : 100%;
 	z-index : 10;
@@ -80,26 +68,39 @@
 
 #page-top {
 	margin-top : 74px;
-	height : calc(100% - 74px);
+	height : calc(100vh - 74px);
 }
 
 
+.title-font {
+	font-family: 'Jua', sans-serif;
+}
+
+.basic-font {
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight : 700;
+	font-size : 16px;
+}
+
+.controller {
+	height : 180px;
+	width : 110px;
+	border : solid 1px;
+	position : fixed;
+	right : 2%;
+	top : 40%;
+	border-radius : 10px;
+}
+
 
 @media (min-width: 992px) {
-  .masthead {
-    padding-top: calc(2rem + 104px);
-    padding-bottom: 6rem;
-  }
-  .masthead .masthead-heading {
-    font-size: 4rem;
-    line-height: 3.5rem;
-  }
-  .masthead .masthead-subheading {
-    font-size: 1.5rem;
-  }
 	
 	.pdfBar{
 		width : 41.66666%;
+	}
+	
+	.controller {
+		right : 5%;
 	}
 	
 }
@@ -127,6 +128,7 @@
 
 .overlay-keyword{
 	opacity : 0;
+	
 }
 
 .NewsBlock:hover {
@@ -154,7 +156,7 @@
 }
 
 .bg-2 {
-	background-color : #EBEDF2  !important;
+	background-color : #e1e5f0  !important;
 }
 
 .bg-3 {
@@ -168,4 +170,13 @@
 .bg-5 {
 	background-color : #8C6258  !important;
 }
+
+.gradient {
+	background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.bg-light-yellow {
+	background-color : #e6cb93  !important;
+}
+
 

@@ -9,10 +9,11 @@ $(function(){
 	// dynamic graph
 	// setup
 
-	const colors = [...Array(5).fill('rgba(235, 237, 242, 1)'),
-				   ...Array(5).fill('rgba(217, 210, 191, 1)'),
-				   ...Array(5).fill('rgba(166, 133, 114, 1)'),
-				   ...Array(5).fill('rgba(140, 98, 88, 1)')].reverse()
+	const colors = [...Array(4).fill('rgba(213, 51, 105, 1)'),
+				   ...Array(4).fill('rgba(215, 77, 100, 1)'),
+				   ...Array(4).fill('rgba(215, 110, 93, 1)'),
+				   ...Array(4).fill('rgba(217, 140, 88, 1)'),
+				   ...Array(4).fill('rgba(218, 174, 81, 1)')]
 
 	var chart = null;
 
@@ -200,7 +201,7 @@ $(function(){
 		$('#wordcloud').css('opacity', 1);
 	}
 	
-	setTimeout(initialize, 1500)
+	setTimeout(initialize, 500)
 
 
 

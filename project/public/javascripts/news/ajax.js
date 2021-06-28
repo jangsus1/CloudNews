@@ -1,3 +1,4 @@
+var page = 1;
 $(function(){
 	const $start = $('#startDate');
 	$start.val("2020-01-01");
@@ -17,16 +18,16 @@ $(function(){
 		const keyword = $('#keywordInput').val();
 		const start = $start.val();
 		const end = $end.val();
-		const page = 1;
 		$.get( "/api/publishers/"+$(this).attr('pid')+"/news?start="+start+"&end="+end+(keyword && "&keyword="+keyword)+(page && "&page="+page), function(data){
 			const {pagination, newsList, keywordList} = data;
-			console.log(data)
-			$('.newsCol').css('display', 'none')
+			$('.newsCol').css('opacity', '0')
+			$('.newsCol').css('pointer-events', 'none')
 			
 			newsList.forEach((news, ind) => {
 				const el = $('#item'+(ind+1))
-				el.css('display', 'flex')
-				el.find('.newsBlock').attr('nid', news.id)
+				el.css('opacity', '1')
+				el.css('pointer-events', 'auto')
+				el.find('.NewsBlock').attr('nid', news.id)
 				el.find('.mainImage').attr('src', news.mainImageURL)
 				el.find('.mainImage').css('display', 'none')
 				el.find('.spinner-border').css('display', 'block')
@@ -53,8 +54,7 @@ $(function(){
 	
 })
 
-$('img.mainImage').on('load', function(){
-		console.log("hehehe")
+$('.mainImage').on('load', function(){
 		$(this).css('display', 'block');
 		$(this).prev().css('display', 'none')
 	})

@@ -30,11 +30,7 @@ module.exports = function(Model){
     const pageMax = Math.ceil(count/perPage);
     const startPage = Math.max(1, page - (numPage / 2));
     let endPage = Math.min(startPage + numPage, pageMax);
-    const pages = [];
-    for(let i = startPage; i <= endPage; i++){
-      pages.push(i);
-    }
-    const pagination = { page, count, perPage, pages, previousDisabled : startPage == 1, nextDisabled : endPage == pageMax}
+    const pagination = { page, count, perPage, pageMax, previousDisabled : startPage == 1, nextDisabled : endPage == pageMax}
     return [pagination, rows]
 
   }

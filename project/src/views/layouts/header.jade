@@ -11,25 +11,27 @@ html(lang='en')
 		title Freelancer - Start Bootstrap Theme
 
 		// Favicon
-		link(rel='icon', type='image/x-icon', href='/images/favicon.ico')
+		link(rel='icon', type='image/x-icon', href='/images/logo.png')
 		
 		// Font Awesome icons (free version)
 		script(src='https://use.fontawesome.com/releases/v5.15.3/js/all.js', crossorigin='anonymous')
 		script(src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js")
 		// Google fonts
+		link(href='https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&display=swap', rel='stylesheet', type='text/css')
 		link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
 		link(href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic', rel='stylesheet', type='text/css')
 		script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js')
 		block css
 		block javascript
 		// Core theme CSS (includes Bootstrap)
-		link(href='/stylesheets/styles.css', rel='stylesheet')
+		//link(href='/stylesheets/styles.css', rel='stylesheet')
+		link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css', rel='stylesheet', type='text/css')
 		link(href='/stylesheets/custom.css', rel='stylesheet')
 
 	body#page-top.light
-		nav#mainNav.navbar.navbar-expand-lg.text-uppercase.fixed-top.navbar-shrink.bg-1
+		nav#mainNav.navbar.navbar-expand-lg.text-uppercase.fixed-top.navbar-shrink.gradient
 			.container
-				a.navbar-brand(href='/') 국방 늬-우스
+				a.navbar-brand(href='/' style='font-size:2rem;') 국방 늬-우스
 				button.bg-5.navbar-toggler.text-uppercase.font-weight-bold.text-white.rounded(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
 					| Menu 
 					i.fas.fa-bars
@@ -43,6 +45,7 @@ html(lang='en')
 							a.nav-link.py-3.px-0.px-lg-3.rounded(href='/publishers/3') 육사신보
 						li.nav-item.mx-0.mx-lg-1
 							a.nav-link.py-3.px-0.px-lg-3.rounded(href='/publishers/4') 공사신문
+		
 		block content
 		// Navigation
 		

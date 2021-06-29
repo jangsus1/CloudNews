@@ -23,6 +23,9 @@ $(function(){
 			$('.newsCol').css('opacity', '0')
 			$('.newsCol').css('pointer-events', 'none')
 			
+			$('#currentPage').html(pagination.page);
+			$('#totalPage').html(pagination.pageMax);
+			
 			newsList.forEach((news, ind) => {
 				const el = $('#item'+(ind+1))
 				el.css('opacity', '1')

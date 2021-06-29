@@ -1,11 +1,11 @@
-let items = document.querySelectorAll('#portfolio .news-item')
+let items = document.querySelectorAll('.news-item')
 
 items.forEach((el) => {
     // number of slides per carousel-item
     const minPerSlide = 3
     let next = el.nextElementSibling
     for (var i=1; i<minPerSlide; i++) {
-        if (!next) {
+        if (!next || !next.classList.contains('news-item')) {
             // wrap carousel by using first child
             next = items[0]
         }
@@ -49,4 +49,14 @@ $(function(){
 		}, 500)
 		
 	});
+	
+	$('.item-overlay').hover(function(){
+		$(this).css('opacity', 1);
+	}, function(){
+		$(this).css('opacity', 0);
+	})
+	
+	$('.link').click(function(){
+		window.location = $(this).attr('href');
+	})
 })

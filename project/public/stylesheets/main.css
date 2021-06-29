@@ -1,0 +1,60 @@
+.gradient {
+	background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+}
+
+.sf {
+	transition-delay: 0.25s;
+}
+.ss {
+	transition-delay: 0.5s;
+}
+.st {
+	transition-delay: 0.75s;
+}
+
+.step {
+	opacity: 0;
+	
+	transition-duration: 0.75s;
+	transform: translatey(-5rem);
+}
+
+.loaded {
+	opacity: 1;
+	transform: translatey(0rem);
+}
+
+.button {
+	cursor : pointer;
+	overflow : hidden;
+}
+
+.news-item {
+	transition : all 0.5s;
+	overflow : hidden;
+}
+
+.round-border {
+	border-radius : 20px;
+	overflow : hidden;
+}
+
+.gradient-border {
+	border-image-source : linear-gradient(90deg, #d53369 0%, #daae51 100%);
+	border-width : 2px;
+	border-image-slice: 1;
+}
+
+.item-overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	cursor : pointer;
+	background-color : #e1e5f0;
+}

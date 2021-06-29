@@ -7,13 +7,13 @@ block content
 				.col-2.h-100
 					button.prevButton.btn.w-100.h-100(type='button' style='pointer-events:none;')
 						i.fas.fa-angle-double-left
-				.col-3
-				.col-2.h-100.text-center
+				.col-2
+				.col-4.h-100.text-center
 					.pageLocater.mt-2.text-center
 						input#pageLocator.border.border-dark.border-1.mx-1(type='text' style='width:30px;' value=1)
 						span.px-3 /
 						span= news.pages.length
-				.col-3
+				.col-2
 				.col-2.h-100
 					button.nextButton.btn.w-100.h-100(type='button')
 						i.fas.fa-angle-double-right
@@ -37,11 +37,11 @@ block content
 				.row.h-92
 					.h-100.col-lg-5.border-end.border-dark.border-1
 						.row(style='height:5%')
-							.col-4.text-center
+							.col-5.text-center
 								.p-1#date.rounded.bg-2.basic-font= moment(news.issueDate).format('YYYY-MM-DD')
 							.col-2.text-center.p-0
 								.p-1#pageNumber.rounded.bg-2.basic-font 1면
-							.col-6.text-center
+							.col-5.text-center
 								.p-1.rounded.bg-2.basic-font 키워드 추출 결과
 						.row(style='height:95%')
 							.p-3.h-100

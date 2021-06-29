@@ -72,12 +72,15 @@ block content
 							+NewsBlock(newsList[4])
 						.col-lg-4.p-2.newsCol#item6
 							+NewsBlock(newsList[5])
-			.controller.container
-				button(disabled=pagination.previousDisabled) <
-				span#page= pagination.page
-				span / 
-				span#totalPage= pagination.pageMax
-				button(disabled=pagination.nextDisabled) >
+			.controller.container.d-flex.bg-2.flex-row.justify-content-between
+				button.btn(disabled=pagination.previousDisabled)
+					i.fas.fa-angle-left
+				.pagination
+					span#currentPage 1
+					span /
+					span#totalPage= pagination.pageMax
+				button.btn(disabled=pagination.nextDisabled)
+					i.fas.fa-angle-right
 				
 	script(src='/javascripts/news/ajax.js')
 	script(src='/javascripts/news/calendar.js')

@@ -238,9 +238,9 @@ finally:
     conn.close()
     
 #공사 코드
-print("육사신보")
-us = []
-publisher = "uksasinbo"
+print("공사신보")
+gs = []
+publisher = "gongsa"
 date_list = os.listdir(os.path.join(base, publisher))
 for date in date_list:
     print(date)
@@ -267,7 +267,7 @@ for date in date_list:
     if(not os.path.isfile(mainImageURL)):
         print("메인이미지 생성")
         convert_from_path(os.path.join(base, publisher, date,"1", "news.pdf"), 500, single_file=True)[0].save(mainImageURL, 'jpeg')
-    us.append({
+    gs.append({
         "date" : date,
         "pages" : pages,
         "mainImageURL" : mainImageURL[1:],
@@ -280,9 +280,9 @@ conn = mysql.connect(host='localhost', user='root', password='1234', db='gb_db')
 
 try :
     curs = conn.cursor()
-    for news in us:
+    for news in gs:
         newsInsertSQL = "insert into news (mainImageURL, issueDate, createdAt, updatedAt,  publisherId) values (%s, %s, %s, %s, %s)"
-        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 3)
+        newsInsertVal = (news["mainImageURL"], news["date"], today(), today(), 4)
         curs.execute(newsInsertSQL, newsInsertVal)
         newsId = curs.lastrowid
         for page in news["pages"]:

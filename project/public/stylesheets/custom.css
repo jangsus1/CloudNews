@@ -83,12 +83,11 @@
 }
 
 .controller {
-	height : 180px;
-	width : 110px;
-	border : solid 1px;
+	height : 30px;
+	width : 150px;
 	position : fixed;
-	right : 2%;
-	top : 40%;
+	right : 1%;
+	bottom : 10%;
 	border-radius : 10px;
 }
 

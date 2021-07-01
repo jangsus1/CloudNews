@@ -14,7 +14,7 @@ block content
 		.row.h-100
 			.filterArea.col-4.p-0.bg-3
 				.px-4.h-100
-					h2.py-4 Filter
+					h1.py-4 Filter
 					.datePicker
 						span 날짜 필터링
 						input.form-control#datePicker(type='text' name='daterange')
@@ -23,7 +23,7 @@ block content
 					.keywordSearch.mt-2
 						span 포함된 키워드
 						input#keywordInput.form-control(type='text' name='keyword' placeholder='키워드를 입력하세요')
-					#searchButton.mt-2(pid=pid)
+					#searchButton.mt-2
 						button#filterSearch.btn.float-end.bg-5.text-white 검색
 					.w-100.pt-5
 						.calendar.m-auto.mt-3
@@ -73,15 +73,23 @@ block content
 						.col-lg-4.p-2.newsCol#item6
 							+NewsBlock(newsList[5])
 			.controller.container.d-flex.bg-2.flex-row.justify-content-between
-				button.btn(disabled=pagination.previousDisabled)
+				button#paginationPrev.btn(disabled=pagination.page == 1)
 					i.fas.fa-angle-left
 				.pagination
 					span#currentPage 1
 					span /
 					span#totalPage= pagination.pageMax
-				button.btn(disabled=pagination.nextDisabled)
+				button#paginationNext.btn(disabled=pagination.pageMax == pagination.page)
 					i.fas.fa-angle-right
-				
+	script.
+		const params = {
+			page : 1,
+			pageMax : #{pagination.pageMax},
+			publisherId : #{pid},
+			keyword : "",
+			start : "2020-01-01",
+			end : "2022-01-01"
+		}
 	script(src='/javascripts/news/ajax.js')
 	script(src='/javascripts/news/calendar.js')
 				

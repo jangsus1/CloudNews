@@ -6,10 +6,12 @@ html(lang='ko')
 		meta(http-equiv='X-UA-Compatible' content='ie=edge')
 		// Title
 		title
-			| GoSunJo123
+			| CLOUD NEWS
 		meta(name='description' content='')
 		meta(name='keywords' content='')
 		meta(name='author' content='')
+		// Favicon
+		link(rel='icon', type='image/x-icon', href='/images/main/CN.png')
 		link(rel='stylesheet' href='https://unpkg.com/tailwindcss/dist/tailwind.min.css')
 		// Replace with your tailwind.css once created
 		link(href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700' rel='stylesheet')
@@ -17,7 +19,7 @@ html(lang='ko')
 		link(rel='stylesheet' href='/stylesheets/main.css')
 		script(src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js")
 		script(src='https://use.fontawesome.com/releases/v5.15.3/js/all.js', crossorigin='anonymous')
-	body.leading-normal.tracking-normal.text-white.gradient(style="font-family: 'Source Sans Pro', sans-serif;")
+	body#home.leading-normal.tracking-normal.text-white.gradient(style="font-family: 'Source Sans Pro', sans-serif; position: relative;" data-bs-spy="scroll" data-bs-target="#nav-content")
 		// Nav
 		nav#header.gradient.fixed.w-full.z-30.top-0.text-white
 			.w-full.container.mx-auto.flex.flex-wrap.items-center.justify-between.mt-0.py-2
@@ -36,13 +38,13 @@ html(lang='ko')
 					ul.list-reset.justify-end.flex-1.items-center(class='lg:flex')
 						li.mr-3
 							// Navbar Title
-							a.inline-block.py-2.px-4.text-black.font-bold.no-underline(href='#') Active
+							a.toggleColour.inline-block.py-2.px-4.text-black.font-bold.no-underline(class="hover:text-gray-800 hover:text-underline lg:text-lg" href='#home') Home
 						li.mr-3
-							a.inline-block.text-black.no-underline.py-2.px-4(class='hover:text-gray-800 hover:text-underline' href='#') link
+							a.toggleColour.inline-block.py-2.px-4.text-black.font-bold.no-underline(class='hover:text-gray-800 hover:text-underline lg:text-lg' href='#news') News
 						li.mr-3
-							a.inline-block.text-black.no-underline.py-2.px-4(class='hover:text-gray-800 hover:text-underline' href='#') link
-					button#navAction.mx-auto.bg-white.text-gray-800.font-bold.rounded-full.mt-4.py-4.px-8.shadow.opacity-75.transform.transition.duration-300.ease-in-out(class='lg:mx-0 hover:underline lg:mt-0 focus:outline-none focus:shadow-outline hover:scale-105')
-						| Action
+							a.toggleColour.inline-block.py-2.px-4.text-black.font-bold.no-underline(class='hover:text-gray-800 hover:text-underline lg:text-lg' href='#services') Services
+						li.mr-3
+							a.toggleColour.inline-block.py-2.px-4.text-black.font-bold.no-underline(class='hover:text-gray-800 hover:text-underline lg:text-lg' href='#process') Process
 			hr.border-b.border-gray-100.opacity-25.my-0.py-0
 		// Hero
 		.pt-24
@@ -78,7 +80,7 @@ html(lang='ko')
 					g(transform='translate(-4.000000, 76.000000)' fill='#FFFFFF' fill-rule='nonzero')
 						path(d='M0.457,34.035 C57.086,53.198 98.208,65.809 123.822,71.865 C181.454,85.495 234.295,90.29 272.033,93.459 C311.355,96.759 396.635,95.801 461.025,91.663 C486.76,90.01 518.727,86.372 556.926,80.752 C595.747,74.596 622.372,70.008 636.799,66.991 C663.913,61.324 712.501,49.503 727.605,46.128 C780.47,34.317 818.839,22.532 856.324,15.904 C922.689,4.169 955.676,2.522 1011.185,0.432 C1060.705,1.477 1097.39,3.129 1121.236,5.387 C1161.703,9.219 1208.621,17.821 1235.4,22.304 C1285.855,30.748 1354.351,47.432 1440.886,72.354 L1441.191,104.352 L1.121,104.031 L0.457,34.035 Z')
 		// Section 1 News Craousel
-		section.bg-white.border-b.py-8
+		section#news.bg-white.border-b.py-8(class='lg:py-12')
 			.container.mx-auto.flex.flex-wrap.pt-4.pb-12(style='height : 30vw;')
 				h1.w-full.my-2.text-5xl.font-bold.leading-tight.text-center.text-gray-800
 					| News
@@ -120,7 +122,7 @@ html(lang='ko')
 						.flex-initial.w-28.justify-center.flex.button#newsCarouselRight
 							i.fas.fa-angle-right.w-full.h-full(style='color : black;')
 		// Section 2 Services
-		section.bg-white.border-b.py-8
+		section#services.bg-white.border-b.py-8(class='lg:py-12')
 			.container.max-w-5xl.mx-auto.m-8
 				h1.w-full.my-2.text-5xl.font-bold.leading-tight.text-center.text-gray-800
 					| Services
@@ -155,7 +157,7 @@ html(lang='ko')
 					.w-full.p-6(class='sm:w-1/2')
 						img.w-full.mx-auto(class='sm:h-64' src='/images/main/services/expandable.png' style='object-fit: scale-down;')
 		// Section 3 Process
-		section#process.bg-gray-100.py-8
+		section#process.bg-gray-100.py-8(class='lg:py-12')
 			.container.mx-auto.flex.flex-wrap.pt-4.pb-12
 				h1.w-full.my-2.text-5xl.font-bold.leading-tight.text-center.text-gray-800
 					| Process
@@ -188,14 +190,19 @@ html(lang='ko')
 			.container.mx-auto.flex.flex-wrap.pt-0.pb-4
 				.w-full.pb-0.flex.flex-col.flex-grow.flex-shrink(class='md:w-full')
 					p.my-4.px-4.text-xs.leading-tight
-						| 작전정보통신단 체계개발실 방공유도탄체계팀 | 8xx 홍길동 | HongGilDong@gmail.com 
+						| © 2021 Cloud News. All rights reserved. Developed by Mint Chocolate.
 						br
-						| 						작전정보통신단 체계개발실 방공유도탄체계팀 | 8xx 홍길동 | HongGilDong@gmail.com 
+						| 소속:&nbsp; 공군 작전사령부 예하 작전정보통신단
 						br
-						| 						작전정보통신단 체계개발실 방공유도탄체계팀 | 8xx 홍길동 | HongGilDong@gmail.com 
+						| 제작자:&nbsp; 장일현(j1h3118@naver.com) - Developer
 						br
-						| 						작전정보통신단 체계개발실 방공유도탄체계팀 | 8xx 홍길동 | HongGilDong@gmail.com
+						| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 이승윤(dltmddbs100@gmail.com) - Data scientist
+						br
+						| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 장민석(min99101511@naver.com) - Developer
+						br
+						| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 박재현(horangi18@gmail.com) - Developer
 		
 		script(type='text/javascript' src='/javascripts/main/main.js')
 		script(type='text/javascript' src='/javascripts/main/dropdown.js')
 		script(type='text/javascript' src='/javascripts/main/carousel.js')
+		script(type='text/javascript' src='/javascripts/main/scrollspy.js')

@@ -1,4 +1,37 @@
-var page = 1;
+function updatePage() {
+	const {page, keyword, start, end, publisherId} = params;
+	$.get( "/api/publishers/"+publisherId+"/news?start="+start+"&end="+end+(keyword && "&keyword="+keyword)+(page && "&page="+page), function(data) {
+		const {pagination, newsList, keywordList} = data;
+		
+		$('.newsCol').css('opacity', '0')
+		$('.newsCol').css('pointer-events', 'none')
+
+		$('#currentPage').html(pagination.page);
+		$('#totalPage').html(pagination.pageMax);
+
+		newsList.forEach((news, ind) => {
+			const el = $('#item'+(ind+1))
+			el.css('opacity', '1')
+			el.css('pointer-events', 'auto')
+			el.find('.NewsBlock').attr('nid', news.id)
+			el.find('.mainImage').attr('src', news.mainImageURL)
+			el.find('.mainImage').css('display', 'none')
+			el.find('.spinner-border').css('display', 'block')
+			el.find('#text').text(moment(news.issueDate).format('YYYY년 MM월 DD일 발행'))
+			el.find('#key1').text("1. "+keywordList[ind][0].word)
+			el.find('#key2').text("2. "+keywordList[ind][1].word)
+			el.find('#key3').text("3. "+keywordList[ind][2].word)
+		})
+		params.page = pagination.page;
+		params.pageMax = pagination.pageMax;
+		$('#paginationNext').attr('disabled', params.page == 1);
+		$('#paginationNext').attr('disabled', params.page == params.pageMax);
+		
+	});
+	
+}
+
+
 $(function(){
 	const $start = $('#startDate');
 	$start.val("2020-01-01");
@@ -15,33 +48,29 @@ $(function(){
 	)
 	
 	$('#searchButton').click(function(el){
-		const keyword = $('#keywordInput').val();
-		const start = $start.val();
-		const end = $end.val();
-		$.get( "/api/publishers/"+$(this).attr('pid')+"/news?start="+start+"&end="+end+(keyword && "&keyword="+keyword)+(page && "&page="+page), function(data){
-			const {pagination, newsList, keywordList} = data;
-			$('.newsCol').css('opacity', '0')
-			$('.newsCol').css('pointer-events', 'none')
-			
-			$('#currentPage').html(pagination.page);
-			$('#totalPage').html(pagination.pageMax);
-			
-			newsList.forEach((news, ind) => {
-				const el = $('#item'+(ind+1))
-				el.css('opacity', '1')
-				el.css('pointer-events', 'auto')
-				el.find('.NewsBlock').attr('nid', news.id)
-				el.find('.mainImage').attr('src', news.mainImageURL)
-				el.find('.mainImage').css('display', 'none')
-				el.find('.spinner-border').css('display', 'block')
-				el.find('#text').text(moment(news.issueDate).format('YYYY년 MM월 DD일 발행'))
-				el.find('#key1').text("1. "+keywordList[ind][0].word)
-				el.find('#key2').text("2. "+keywordList[ind][1].word)
-				el.find('#key3').text("3. "+keywordList[ind][2].word)
-			})
-			
-		})
+		params.keyword = $('#keywordInput').val();
+		params.start = $start.val();
+		params.end = $end.val();
+		updatePage()
+	})
+	
+	$('#paginationNext').click(function(){
+		params.page += 1;
+		updatePage()
 		
+	})
+	$('#paginationPrev').click(function(){
+		params.page -= 1;
+		updatePage()
+	})
+	
+	$('#keywordInput').keypress(function(e){
+		if(e.which==13) {
+			params.keyword = $('#keywordInput').val();
+			params.start = $start.val();
+			params.end = $end.val();
+			updatePage()
+		}
 	})
 	
 	$('.NewsBlock').click(function(){

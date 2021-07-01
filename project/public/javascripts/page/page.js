@@ -201,7 +201,8 @@ $(function(){
 		$('#wordcloud').css('opacity', 1);
 	}
 	
-	setTimeout(initialize, 500)
+	$('#firstPage').on('load', initialize)
+	
 
 
 

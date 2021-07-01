@@ -7,7 +7,7 @@ const seeder = async () => {
 	},{
 		id : 2, 
 		name : "나라사랑신문",
-		agency : "국방홍보원"
+		agency : "국가보훈처"
 		
 	},{
 		id : 3, 
@@ -16,7 +16,7 @@ const seeder = async () => {
 		
 	},{
 		id : 4, 
-		name : "공사신보",
+		name : "공사신문",
 		agency : "공군사관학교"
 	}])
 	

@@ -65,7 +65,7 @@ WordChart를 생성하여 키워드별 상대빈도수를 시각화합니다.
 - 데이터 정제 및 분석: Python – Google Colab 사용
 
 ## Affendix
-세부적인 내용은 [사업계획서](https://github.com/jangsus1/)를 참고하여 주시기 바랍니다.  
+세부적인 내용은 [사업계획서](https://github.com/jangsus1/CloudNews/blob/master/%EC%82%AC%EC%97%85%EA%B3%84%ED%9A%8D%EC%84%9C.pdf)를 참고하여 주시기 바랍니다.  
 
 웹서비스는 [여기](https://cloudnews.run.goorm.io/)로 접속하시면 이용하실 수 있습니다.  
 **(+ 현재 대회 종료로 인해 웹서비스 접속은 불가합니다. 너른 양해 부탁드립니다.)**
